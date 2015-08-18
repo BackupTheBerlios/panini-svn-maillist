@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Panini-svn] r20 - trunk/docs
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/panini-svn/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:panini-svn%40lists.berlios.de?Subject=Re%3A%20%5BPanini-svn%5D%20r20%20-%20trunk/docs&In-Reply-To=%3C200602040657.k146vWtY004645%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000020.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Panini-svn] r20 - trunk/docs</H1>
+    <B>lawgon at BerliOS</B> 
+    <A HREF="mailto:panini-svn%40lists.berlios.de?Subject=Re%3A%20%5BPanini-svn%5D%20r20%20-%20trunk/docs&In-Reply-To=%3C200602040657.k146vWtY004645%40sheep.berlios.de%3E"
+       TITLE="[Panini-svn] r20 - trunk/docs">lawgon at berlios.de
+       </A><BR>
+    <I>Sat Feb  4 07:57:32 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000020.html">[Panini-svn] r19 - trunk/docs
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#21">[ date ]</a>
+              <a href="thread.html#21">[ thread ]</a>
+              <a href="subject.html#21">[ subject ]</a>
+              <a href="author.html#21">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: lawgon
+Date: 2006-02-04 07:56:41 +0100 (Sat, 04 Feb 2006)
+New Revision: 20
+
+Modified:
+   trunk/docs/actors_goals.txt
+Log:
+sample use case
+
+Modified: trunk/docs/actors_goals.txt
+===================================================================
+--- trunk/docs/actors_goals.txt	2006-02-04 06:35:19 UTC (rev 19)
++++ trunk/docs/actors_goals.txt	2006-02-04 06:56:41 UTC (rev 20)
+@@ -53,6 +53,37 @@
+ 7. If form is validated actor is registered
+ 8. actor is notified of registration by email
+ 
++another way:
+ 
++actor author, translator, reviewer
++goal - to register
++conditions - should have a verifiable email address and the email address
++should not be already registered
++
++1. actor submits email address
++2. email address is checked against database
++3. verifying email sent to the email address
++4. actor verifies email
++5. actor fills in form with his details
++6. form is validated
++7. Actor is registered
++8. actor is notified of registration by email
++
++Extensions:
++1a email address already in database - failure, actor directed to login page
++3a. email address not verified - failure, no action
++6a. form incomplete or invalid - returned for correction
++6a1. form not corrected - failure, no action
++
++Variations:
++Actor is
++1. author
++2. translator
++3. reviewer
++4. author and translator
++5. author, translator and reviewer
++6. translator and reviewer
++
++
+  
+ 
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000020.html">[Panini-svn] r19 - trunk/docs
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#21">[ date ]</a>
+              <a href="thread.html#21">[ thread ]</a>
+              <a href="subject.html#21">[ subject ]</a>
+              <a href="author.html#21">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/panini-svn">More information about the Panini-SVN
+mailing list</a><br>
+</body></html>

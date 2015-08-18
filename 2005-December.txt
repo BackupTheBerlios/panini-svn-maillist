@@ -1,0 +1,36 @@
+From ghoseb at berlios.de  Mon Dec  5 02:35:27 2005
+From: ghoseb at berlios.de (ghoseb at berlios.de)
+Date: Mon, 5 Dec 2005 02:35:27 +0100
+Subject: [Panini-svn] r15 - /
+Message-ID: <200512050135.jB51ZRMb021474@sheep.berlios.de>
+
+Author: ghoseb
+Date: 2005-12-05 02:35:12 +0100 (Mon, 05 Dec 2005)
+New Revision: 15
+
+Added:
+   tags/
+Log:
+Creating the tags dir
+
+
+
+
+From ghoseb at berlios.de  Mon Dec  5 02:37:20 2005
+From: ghoseb at berlios.de (ghoseb at berlios.de)
+Date: Mon, 5 Dec 2005 02:37:20 +0100
+Subject: [Panini-svn] r16 - /
+Message-ID: <200512050137.jB51bK5h021708@sheep.berlios.de>
+
+Author: ghoseb
+Date: 2005-12-05 02:37:11 +0100 (Mon, 05 Dec 2005)
+New Revision: 16
+
+Added:
+   branches/
+Log:
+Creating the branches dir
+
+
+
+

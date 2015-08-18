@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Panini-svn] r6 - trunk/docs
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/panini-svn/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:panini-svn%40lists.berlios.de?Subject=Re%3A%20%5BPanini-svn%5D%20r6%20-%20trunk/docs&In-Reply-To=%3C200511170900.jAH908uL032564%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000006.html">
+   <LINK REL="Next"  HREF="000008.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Panini-svn] r6 - trunk/docs</H1>
+    <B>ghoseb at BerliOS</B> 
+    <A HREF="mailto:panini-svn%40lists.berlios.de?Subject=Re%3A%20%5BPanini-svn%5D%20r6%20-%20trunk/docs&In-Reply-To=%3C200511170900.jAH908uL032564%40sheep.berlios.de%3E"
+       TITLE="[Panini-svn] r6 - trunk/docs">ghoseb at berlios.de
+       </A><BR>
+    <I>Thu Nov 17 10:00:08 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000006.html">[Panini-svn] r5 - trunk/docs
+</A></li>
+        <LI>Next message: <A HREF="000008.html">[Panini-svn] r7 - trunk/docs
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#7">[ date ]</a>
+              <a href="thread.html#7">[ thread ]</a>
+              <a href="subject.html#7">[ subject ]</a>
+              <a href="author.html#7">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: ghoseb
+Date: 2005-11-17 09:59:58 +0100 (Thu, 17 Nov 2005)
+New Revision: 6
+
+Modified:
+   trunk/docs/proposal.txt
+Log:
+Added a few things ... final draft.
+
+
+Modified: trunk/docs/proposal.txt
+===================================================================
+--- trunk/docs/proposal.txt	2005-11-16 16:44:32 UTC (rev 5)
++++ trunk/docs/proposal.txt	2005-11-17 08:59:58 UTC (rev 6)
+@@ -12,7 +12,9 @@
+ maintain an adequate level of accuracy and consistency.
+ 
+ The  application  should cater  to  both  sporadic  or 'one-off'  online
+-translation efforts and more consistent off-line efforts.
++translation  efforts and  more  consistent off-line  efforts. Thus  it'd
++basically  be a  online web  based  application, but  will also  support
++offline contributions too.
+ 
+ In addition  the application  should build a  basic database  of strings
+ with  translations  in the  languages  catered  to  - and  offer  either
+@@ -42,13 +44,13 @@
+ Platform:
+ 
+ We propose using the Python  scripting language with PostgreSQL RDBMS as
+-a backend.  The webserver will be  Apache. We will be  using other tools
+-and frameworks  not limited  to Django, Subversion,  Plone and  Trac for
+-scripting various parts  of the project. Both Python  and PostgreSQL are
+-stable, mature  and inherently secure  and used worldwide on  an immense
+-range of  products and  applications. Further, python  being an  easy to
+-master scripting language, more  non-technical people will be encouraged
+-to hack at and contribute to the project.
++a backend.  The  webserver will be Apache. We will  be using other tools
++and frameworks not limited to  Django, Subversion and Trac for scripting
++various parts  of the  project. Both Python  and PostgreSQL  are stable,
++mature and inherently  secure and used worldwide on  an immense range of
++products  and applications.   Further, Python  being an  easy  to master
++scripting language, more non-technical people will be encouraged to hack
++at and contribute to the project.
+ 
+ Workflow:
+ 
+@@ -90,6 +92,12 @@
+ strings translated. This can also  be filtered according to the project,
+ language, translator as well as different project versions.
+ 
++Merging Translations:
++
++There will be provison for merging translations done through independent
++systems.  That will  avoid redundancy  and will  help in  making  use of
++pre-existing translations.
++
+ Online Review:
+ 
+ An system for reviewing the translations online will be present so as to
+@@ -192,8 +200,17 @@
+ and and translators - features will be added and modified in response to
+ the feedback.
+ 
++Commitment To Help Existing Language Teams:
+ 
+-  
++We are committed  towards helping existing language teams  in setting up
++the application  for them and  provide all assistance to  them regarding
++usage of  the application.   We have at  present talked to  two language
++teams, namely  the Oriya (or)  language team's Gora Mohanty,  the Nepali
++(np) language  team's Subir  B &amp; the  Dzongkha (dz) team's  Pema Geyleg.
++Pradhanang.  We'll  work with them  in getting the  application deployed
++for  them  and  they will  help  us  by  providing translations  of  the
++interface, bug reports &amp; general feedback.
++
+ Funding:
+ 
+ We are applying for two concurrent fellowships. We intend to develop the
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000006.html">[Panini-svn] r5 - trunk/docs
+</A></li>
+	<LI>Next message: <A HREF="000008.html">[Panini-svn] r7 - trunk/docs
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#7">[ date ]</a>
+              <a href="thread.html#7">[ thread ]</a>
+              <a href="subject.html#7">[ subject ]</a>
+              <a href="author.html#7">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/panini-svn">More information about the Panini-SVN
+mailing list</a><br>
+</body></html>

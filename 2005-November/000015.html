@@ -1,0 +1,255 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Panini-svn] r14 - trunk/docs
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/panini-svn/2005-November/index.html" >
+   <LINK REL="made" HREF="mailto:panini-svn%40lists.berlios.de?Subject=Re%3A%20%5BPanini-svn%5D%20r14%20-%20trunk/docs&In-Reply-To=%3C200511230613.jAN6D4NI002797%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000014.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Panini-svn] r14 - trunk/docs</H1>
+    <B>ghoseb at BerliOS</B> 
+    <A HREF="mailto:panini-svn%40lists.berlios.de?Subject=Re%3A%20%5BPanini-svn%5D%20r14%20-%20trunk/docs&In-Reply-To=%3C200511230613.jAN6D4NI002797%40sheep.berlios.de%3E"
+       TITLE="[Panini-svn] r14 - trunk/docs">ghoseb at berlios.de
+       </A><BR>
+    <I>Wed Nov 23 07:13:04 CET 2005</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000014.html">[Panini-svn] r13 - trunk/docs
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#15">[ date ]</a>
+              <a href="thread.html#15">[ thread ]</a>
+              <a href="subject.html#15">[ subject ]</a>
+              <a href="author.html#15">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: ghoseb
+Date: 2005-11-23 07:13:04 +0100 (Wed, 23 Nov 2005)
+New Revision: 14
+
+Modified:
+   trunk/docs/proposal.txt
+Log:
+Spellcheck &amp; formatting foo
+
+
+Modified: trunk/docs/proposal.txt
+===================================================================
+--- trunk/docs/proposal.txt	2005-11-21 11:18:46 UTC (rev 13)
++++ trunk/docs/proposal.txt	2005-11-23 06:13:04 UTC (rev 14)
+@@ -12,9 +12,9 @@
+ the application  developer to coordinate the efforts  of individuals and
+ maintain an adequate level of accuracy and consistency.
+ 
+-The  application  should cater  to  both  sporadic  or 'one-off'  online
+-translation efforts  and more consistent off-line efforts.  Thus it will
+-basically  be an  online web  based application,  but will  also support
++The  application should  cater  to both  sporadic  or 'one-off'  on-line
++translation efforts and more  consistent off-line efforts.  Thus it will
++basically be  an on-line  web based application,  but will  also support
+ offline contributions too.
+ 
+ In addition  the application  should build a  basic database  of strings
+@@ -29,7 +29,7 @@
+ translation.
+ 
+ It goes  without saying  that the application  should be  free software,
+-multiplatform  and  multilingual.  It   is  also  clear  that  any  such
++multi-platform  and  multilingual.   It  is  also clear  that  any  such
+ application has to be web based.
+ 
+ Existing efforts:
+@@ -37,9 +37,9 @@
+ 
+ We  have  investigated  Rosetta [<A HREF="https://launchpad.net/rosetta">https://launchpad.net/rosetta</A>],  Pootle
+ [<A HREF="http://pootle.wordforge.org/">http://pootle.wordforge.org/</A>]   and   Entrans  [<A HREF="http://entrans.sf.net">http://entrans.sf.net</A>].
+-Rosetta is proprietory software. Pootle,  written in python has the idea
+-correct, but it uses a  filesystem to store everything and probably wont
+-scale.  Entrans uses  PHP and  MySQL, which  we feel  are not  stable or
++Rosetta is proprietary software. Pootle,  written in python has the idea
++correct, but it uses a file-system to store everything and probably wont
++scale.  Entrans  uses PHP  and MySQL,  which we feel  are not  stable or
+ secure  enough  for  an  application  of  this nature  -  and  from  the
+ documentation does  not appear  to have the  comprehensive aims  of this
+ project. However elements  of it's user interface are  good and could be
+@@ -49,7 +49,7 @@
+ ---------
+ 
+ We propose using the Python  scripting language with PostgreSQL RDBMS as
+-a backend.  The  webserver will be Apache. We will  be using other tools
++a back-end.  The web server will be Apache. We will be using other tools
+ and frameworks not limited to  Django, Subversion and Trac for scripting
+ various parts  of the  project. Both Python  and PostgreSQL  are stable,
+ mature and inherently  secure and used worldwide on  an immense range of
+@@ -73,16 +73,16 @@
+ partially.
+ 
+ All translations  of strings in all  official versions will  be added to
+-the database.  In case of more than  one translation of a  string into a
+-given  lanuguage, all  translations  will be  added  and it  is left  to
++the database.  In  case of more than one translation of  a string into a
++given  language,  all translations  will  be added  and  it  is left  to
+ individual developers to choose the one they want.
+ 
+ There will be  a facility for experts in  particular languages to review
+ the  database and  cull  out obviously  incorrect translations,  correct
+ spellings,  mark any one  translation as  'preferred' and  remove almost
+-identical duplic ates.
++identical duplicate ates.
+ 
+-Translators will be  able to use the online interface  as well as upload
++Translators will be able to use  the on-line interface as well as upload
+ translations made offline. Submitting translations by email will also be
+ catered to, but this will not have an automatic interface. The developer
+ will have  to accept responsibility for accepting  email submissions and
+@@ -100,29 +100,29 @@
+ 
+ Merging Translations &amp; Upstream Syncing:
+ 
+-There will be provison for merging translations done through independent
+-systems.  That will  avoid redundancy  and will  help in  making  use of
+-pre-existing translations.
++There  will   be  provision   for  merging  translations   done  through
++independent systems.  That will avoid redundancy and will help in making
++use of pre-existing translations.
+ The application  would allow syncing  of translated files  directly with
+ upstream CVS / SVN repositories.
+ 
+ Translation Memory:
+ 
+-The system  will never throw translations away.  All proposed, accepted,
++The system will never  throw translations away.  All proposed, accepted,
+ rejected  translations will  be  perpetually kept  in  the database  for
+ future  reference. For example,  the system  would be  able to  show all
+ prior translations of a given string in any given language.
+ 
+-Online Review:
++On-line Review:
+ 
+-An system for reviewing the translations online will be present so as to
+-help  trusted reviewers  to  just login  to  the system  and review  the
++An system for  reviewing the translations on-line will  be present so as
++to help  trusted reviewers to  just login to  the system and  review the
+ translations.
+ 
+ Consistency Checking:
+ 
+ The  application  will  automatically   check  the  consistency  of  the
+-translations  and will  report errors  if any  for fixes.  In case  of a
++translations and  will report  errors if  any for fixes.   In case  of a
+ broken translation,  the official version  will be switched to  the last
+ sane  translation until  the broken  [but  newer] version  is fixed  and
+ committed.
+@@ -142,11 +142,11 @@
+ 
+ Translated UI:
+ 
+-The UI of the application  itself will be translated into various indian
+-langauges so  as to allow translators  use the application  in their own
++The UI of the application  itself will be translated into various Indian
++languages so  as to allow translators  use the application  in their own
+ native language.
+ 
+-Extensive Online Documentation:
++Extensive On-line Documentation:
+ 
+ Documentation  is very important  in a  project and  we will  provide an
+ extensive documentation  for the application  so that it's easy  for the
+@@ -155,22 +155,22 @@
+ Email Interface:
+ 
+ As already pointed  out, we intend to provide an  Email interface to the
+-application so  that authenticated translators  can recieve untranslated
++application so  that authenticated translators  can receive untranslated
+ strings and send translations by Email.
+ 
+ Web Services API:
+ 
+-The system would provide a Webservice API so that existing &amp; new desktop
+-translation tools can plug into  the application via a plugin. This will
+-enable translators  to keep using their  tools but with  the Panini back
+-end.
++The  system would  provide  a Web-service  API  so that  existing &amp;  new
++desktop  translation   tools  can  plug  into  the   application  via  a
++plugin. This will enable translators  to keep using their tools but with
++the Panini back end.
+ 
+ Screenshot Gallery:
+ 
+-There will be a screenhot gallery which will have screenshots of various
+-translated applications to  inspire more people to join  the i18n / l10n
+-scene as  well as to  show the status  of translations for  a particular
+-language / project.
++There  will be  a  screenshot  gallery which  will  have screenshots  of
++various translated applications to inspire  more people to join the i18n
++/  l10n scene  as  well as  to show  the  status of  translations for  a
++particular language / project.
+ 
+ Schedule:
+ ---------
+@@ -242,7 +242,7 @@
+ We are applying for two concurrent fellowships. We intend to develop the
+ application on  one hand, and,  at the same  time, set up a  service for
+ translators to use. The advantage of  having a live service would be for
+-active feedback for the  application developement process, thus ensuring
++active feedback  for the application development  process, thus ensuring
+ that the application does not wind up as academic vapourware.
+ 
+ 1. We'll initially  require 6 months  funding to create  the application
+@@ -253,9 +253,9 @@
+    cases, etc.
+    
+ 2. Hosting space with root  access along with Subversion, Python, Apache
+-   mod_python, PostgreSQL and a few GB of diskspace - we will either get
+-   hosted or will fund the hosting  out of the fellowship amount for the
+-   service server.
++   mod_python, PostgreSQL  and a few GB  of disk-space -  we will either
++   get hosted or will fund the  hosting out of the fellowship amount for
++   the service server.
+ 
+ Developers:
+ -----------
+@@ -270,7 +270,7 @@
+    working committee.
+    Email - <A HREF="https://lists.berlios.de/mailman/listinfo/panini-svn">b.ghose at gnu.org.in</A>
+ 
+-2. Kenneth  Gonsalves:  A  Free  &amp;  Open  source  Developer.  Resume  is
++2. Kenneth  Gonsalves:  A  Free  &amp;  Open source  Developer.   Resume  is
+    <A HREF="http://avsap.org.in">http://avsap.org.in</A>
+    Email - <A HREF="https://lists.berlios.de/mailman/listinfo/panini-svn">lawgon at thenilgiris.com</A>
+ 
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000014.html">[Panini-svn] r13 - trunk/docs
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#15">[ date ]</a>
+              <a href="thread.html#15">[ thread ]</a>
+              <a href="subject.html#15">[ subject ]</a>
+              <a href="author.html#15">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/panini-svn">More information about the Panini-SVN
+mailing list</a><br>
+</body></html>

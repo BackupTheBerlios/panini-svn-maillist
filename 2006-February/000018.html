@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Panini-svn] r17 - trunk/docs
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/panini-svn/2006-February/index.html" >
+   <LINK REL="made" HREF="mailto:panini-svn%40lists.berlios.de?Subject=Re%3A%20%5BPanini-svn%5D%20r17%20-%20trunk/docs&In-Reply-To=%3C200602022347.k12NlqJG010487%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000019.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Panini-svn] r17 - trunk/docs</H1>
+    <B>ghoseb at BerliOS</B> 
+    <A HREF="mailto:panini-svn%40lists.berlios.de?Subject=Re%3A%20%5BPanini-svn%5D%20r17%20-%20trunk/docs&In-Reply-To=%3C200602022347.k12NlqJG010487%40sheep.berlios.de%3E"
+       TITLE="[Panini-svn] r17 - trunk/docs">ghoseb at berlios.de
+       </A><BR>
+    <I>Fri Feb  3 00:47:52 CET 2006</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000019.html">[Panini-svn] r18 - trunk/docs
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#18">[ date ]</a>
+              <a href="thread.html#18">[ thread ]</a>
+              <a href="subject.html#18">[ subject ]</a>
+              <a href="author.html#18">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: ghoseb
+Date: 2006-02-03 00:47:52 +0100 (Fri, 03 Feb 2006)
+New Revision: 17
+
+Added:
+   trunk/docs/use-cases.txt
+Log:
+Initial draft of use-cases
+
+
+Added: trunk/docs/use-cases.txt
+===================================================================
+--- trunk/docs/use-cases.txt	2005-12-05 01:37:11 UTC (rev 16)
++++ trunk/docs/use-cases.txt	2006-02-02 23:47:52 UTC (rev 17)
+@@ -0,0 +1,121 @@
++Panini l10n Framework
++---------------------
++USE CASES:
++
++1 Register Project (register_proj)
++  ---------------------------
++  Description: Developers register their projects for translation. This
++  means that the developer furnishes details about the project and does
++  an initial upload of the POT/PO file(s) into the system.
++
++  Actors: Developer
++
++  Assumptions: The developer is a registered user of the system and is
++  already logged in.
++
++  Steps: Developer clicks on `Register new project', furnishes meta-data
++  about the project and uploads the POT file into the system. If
++  the project already has some translations in a few languages, he
++  selects the languages and uploads the corresponding PO files. He then
++  provides a version number to the set of POT/PO files.
++
++  Non-Functional: TODO
++
++  Issues: TODO
++
++
++2 Manage Translations (manage_trans)
++  ----------------------------------
++  Description: The project admin can view project statistics and check
++  translation status. He can review translations and view / accept / reject
++  recommendations made by untrusted translators. He can also upload
++  newer versions of POT/PO files in different languages. If needed, he
++  can download the translated files for upstream syncing.
++
++  Actors: Developer/Project Admin
++
++  Assumptions: The project is registered and has received some
++  translations.
++
++  Steps: Admin clicks on `Projects &gt; Project_Name &gt; Manage'. He can then
++  view `Statistics', or incoming translations in different languages. To
++  upload a newer version of POT/PO files, he clicks on
++  `Upload_New_Version'. The process is similar to that during
++  register_proj. He then increments the version of the POT/PO file set.
++
++  Non-Functional: TODO
++
++  Issues: TODO
++
++
++3 Manage Users (manage_users)
++  ---------------------------
++  Description: The project admin can view the list of contributors to
++  the his project. He can elevate the status of untrusted translators to
++  trusted ones. He can add/delete translators, reviewers. He can also
++  give translators/reviewers admim privileges after which they will
++  become Project Admins.
++
++  Actors: Developer/Project Admin
++
++  Assumptions: The developer has admin privileges to the a registered
++  project which has one or more contributors.
++
++  Steps: Admin clicks on `Projects &gt; Project_Name &gt; Manage_Users'. He
++  can then view the list of `Contributors' and their contributions. From
++  and drop-down list, he can change the role/permission/status of the
++  user. He can also add new users to the project.
++
++  Non-Functional: TODO
++
++  Issues: TODO
++
++
++4 Translate (translate)
++  ---------------------
++  Description: The user can view current projects and can contribute
++  translations to the project in his chosen language(s).
++
++  Actors: Developer, Translator, Reviewer
++
++  Assumptions: The actor is a registered user and there are one or more
++  registered projects.
++
++  Steps: The user clicks on `Projects' and views the list of projects he
++  can contribute to. After selecting the project, the user selects his
++  preferred language (defaults to that in his profile prefs) and gets
++  some strings which he can translate. If he is untrusted, his
++  translations don't get into the main version and go directly to the
++  Reviewer/Admin. If he wishes to translate offline, there will be a way
++  to download the POT/PO file and later upload them back.
++
++  Non-Functional: TODO
++
++  Issues: TODO
++
++5 Review (review)
++  ---------------
++  Description: The reviewer reviews the list of translations and can
++  approve/deny them.
++
++  Actors: Reviewer
++
++  Assumptions: The user is registered and is approved by the Project
++  Admin as a Reviewer.
++
++  Steps: The user clicks on `Projects' and can view the list of
++  projects. After selecting the project, he will se the list of incoming
++  translations which can be filtered wrt various parameters like date,
++  status of user (trusted, untrusted), etc. Then he can either
++  review online where he'll be able to approve/deny/recommend
++  translations or he can also do it offline and later upload back. In
++  the offline method, unchanged strings mean approval, empty strings
++  will mean denial and fuzzy ones will mean recommendations.
++
++  Non-Functional: TODO
++
++  Issues: TODO
++
++  
++
++  
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000019.html">[Panini-svn] r18 - trunk/docs
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#18">[ date ]</a>
+              <a href="thread.html#18">[ thread ]</a>
+              <a href="subject.html#18">[ subject ]</a>
+              <a href="author.html#18">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/panini-svn">More information about the Panini-SVN
+mailing list</a><br>
+</body></html>

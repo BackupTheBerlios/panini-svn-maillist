@@ -1,0 +1,2320 @@
+From ghoseb at berlios.de  Tue Nov 15 12:57:59 2005
+From: ghoseb at berlios.de (ghoseb at BerliOS)
+Date: Tue, 15 Nov 2005 12:57:59 +0100
+Subject: [Panini-svn] r1 - / trunk
+Message-ID: <200511151157.jAFBvxIj004618@sheep.berlios.de>
+
+Author: ghoseb
+Date: 2005-11-15 12:57:57 +0100 (Tue, 15 Nov 2005)
+New Revision: 1
+
+Added:
+   trunk/
+   trunk/2005-10-25-ircmeet.txt
+   trunk/egovspecs.txt
+   trunk/i18nspecs.txt
+   trunk/proposal.txt
+Log:
+Initial import
+
+Added: trunk/2005-10-25-ircmeet.txt
+===================================================================
+--- trunk/2005-10-25-ircmeet.txt	2005-11-14 14:11:13 UTC (rev 0)
++++ trunk/2005-10-25-ircmeet.txt	2005-11-15 11:57:57 UTC (rev 1)
+@@ -0,0 +1,64 @@
++After an IRC meet on Tue Oct 25, 2005 we reached a genral consensus on
++the following features --
++
++* Whether we will write an application or provide a service to the
++  people -- To be decided later
++
++* Statistics -- Must have  
++
++* Online Review -- Must have
++
++* Consistency Checking -- Must have
++
++* Version Control -- A basic form of VC should be there, nothing too
++  ambitious, but there will be a way to mark a PO file to be a part of x
++  version of y app while uploading. The app will in any case treat PO
++  files of different version as separate files. So in a way, the VC will
++  be at a higher level than the app itself
++
++* User Profiles -- Unnecessary
++
++* Management Console -- Not needed as volunteers will be able to take up
++  work via the stats page itself
++
++* Downloads -- A way to filter translations according to language,
++  product, etc. and download tarballs
++
++* Minor Points
++  -- Translated UI
++  -- Extensive Online Documentation
++  -- Email Interface
++  -- Screenshot Gallery (?)
++
++* TODO -- Think of more features to put in  
++
++It was also decided that we will try to hack on the Entrans JavaScript
++code to do the keymaps and integrate with our app. We'll acknowledge
++Entrans as the source of that code.
++  
++We have to state why we are doing a separate project and not joining an
++existing one: rosetta: not free pootle: in python, but no rdbms backend,
++so will not scale wordforge site itself seems to be broken.
++
++entrans: i personaly cannot join it as the languages are php and
++mysql. On the other hand it is an indian project with committed indian
++developers on it. We are also planning to use some of their javascript
++code. On the other hand, there is no project description so i dont know
++what they are planning.
++
++What software are we going to use and why?
++-- We'll of course use Django + PostgreSQL [+Apache/mod_python]
++
++storage of pot and po files in the rdbms or on the filesystem?
++
++django stores files and images on the filesystem with the path to the
++file in the database (default behaviour)
++-- We'll have to hack Django in such a way that we can store the
++POTfiles in the DB itself and not just the paths. [I guess it's very
++easily achievable since the PO file contains are part of the Model in
++any way]
++
++Can we use trac+svn in any manner?
++-- We'll have to investigate that, as I don't know anything about that
++at the moment. But if trac has a pluggable API which we can hook into
++via Django, then of course, why not?
+
+Added: trunk/egovspecs.txt
+===================================================================
+--- trunk/egovspecs.txt	2005-11-14 14:11:13 UTC (rev 0)
++++ trunk/egovspecs.txt	2005-11-15 11:57:57 UTC (rev 1)
+@@ -0,0 +1,7 @@
++Draft specs for egov project
++
++Required reading: http://www.egov4dev.org/
++
++Introduction:
++
++put a general introduction here
+\ No newline at end of file
+
+Added: trunk/i18nspecs.txt
+===================================================================
+--- trunk/i18nspecs.txt	2005-11-14 14:11:13 UTC (rev 0)
++++ trunk/i18nspecs.txt	2005-11-15 11:57:57 UTC (rev 1)
+@@ -0,0 +1,56 @@
++Web Based Translation / Translator Management Application
++---------------------------------------------------------
++
++We are looking at building a web based translator / translation
++management application. These days, i18n / l10n projects mostly get
++translations done from translators by exchanging PO files via Email
++which is not only slow, but also a very cumbersome process. It doesn't
++allow the project admin to track changes to the PO file and also has no
++scope to track contributions from a given translator. Moreover, with so
++many projects to be translated and so few people participating, it's
++impractical to translate most common strings automatically. There should
++also be a way to remember translations so as to save time in further
++translations and also assure a certain level of consistency of
++translations among all applications. The major issues that are being
++faced by most l10n groups today can be summarised as below --
++
++* Lack of consistency among translations
++* Lack of any translation memory
++* Inefficient use of human resources
++* Lack of decent machine translation facilities
++* Lack of versioning information in translations
++* Mostly complicated translation tools
++* Desktop or web based apps are the only ways to do translation
++* Lack of a coordinated effort among different teams
++* There is no way to contribute in small parts
++* No easy way to get the PO files as and when required
++* No new contributors are coming up
++* The overall process of getting something translated is too long
++
++To solve the above problems and to make the l10n work much smoother, we
++are proposing a web based application which will also act as a
++centralised repository of all Indic l10n work. It will act as the
++ultimate resource for all l10n volunteers. People will be able to
++contribute their translations in a very easy and user friendly way. The
++web based tool intends to achieve the following --
++
++* Act as a central repository of all Indic translations across all
++  products / languages.
++* Make the job of the translator much easier by providing a web based
++  interface.
++* Make reviewing easy by clearly separating the reviewed and unreviewed
++  messages [Once click access to unreviewed strings].
++* Make it easy for beginners to contribute to the IndLinux project.
++* Always provide up to date POT files by monitoring upstream changes.
++* Make sure translations are never lost.
++* Make it easy for new / small language teams to start translating.
++* Provide an email interface
++* Shorten the translation <-> review -> commit process
++
++TODO: Fix the text and add some more points [must write around 1k
++words]. We also need to highlight translator management features, like
++how it will manage multiple teams of translators, do versioning of
++translations, etc. We also need to take a look at the features of
++Rosetta [http://lauchpad.net/rosetta] & Pootle
++[http://pootle.wordforge.org] and see which  of the good features we need.
++
+
+Added: trunk/proposal.txt
+===================================================================
+--- trunk/proposal.txt	2005-11-14 14:11:13 UTC (rev 0)
++++ trunk/proposal.txt	2005-11-15 11:57:57 UTC (rev 1)
+@@ -0,0 +1,223 @@
++Proposal for an Integrated Translation Management Application
++-------------------------------------------------------------
++
++Synopsis: 
++
++Translation of free & open source applications - like free & open source
++applications themselves, depend on the whims of would-be
++translators. There is a need for an application that will both cater to
++the need of individual translators to 'scratch their itch' and translate
++as much as they want of portions they want and at the same time allow
++the application developer to coordinate the efforts of individuals and
++maintain an adequate level of accuracy and consistency.
++
++The application should cater to both sporadic or 'one-off' online
++translation efforts and more consistent off-line efforts.
++
++In addition the application should build a basic database of strings
++with translations in the languages catered to - and offer either
++automatic translation of strings already in the database, or hints for
++already translated strings.
++
++The application should, at a later stage cater to translation of
++documentation - which has to be served to the translator para or section
++wise unlike translation of source which is served string by string.
++
++It goes without saying that the application should be free software,
++multiplatform and multilingual. It is also clear that any such
++application has to be web based.
++
++Existing efforts:
++
++We have investigated Rosetta [https://launchpad.net/rosetta], Pootle
++[http://pootle.wordforge.org/] and Entrans [http://entrans.sf.net].
++Rosetta is proprietory software. Pootle, written in python has the idea
++correct, but it uses a filesystem to store everything and probably wont
++scale. Entrans uses PHP and MySQL, which we feel are not stable or
++secure enough for an application of this nature - and from the
++documentation does not appear to have the comprehensive aims of this
++project. However elements of it's user interface are good and could be
++incorporated into this project.
++
++Platform:
++
++We propose using the Python scripting language with PostgreSQL RDBMS as
++a backend. The webserver will be Apache. We will be using other tools
++and frameworks not limited to Django, Subversion, Plone and Trac for
++scripting various parts of the project. Both Python and PostgreSQL are
++stable, mature and inherently secure and used worldwide on an immense
++range of products and applications. Further, python being an easy to
++master scripting language, more non-technical people will be encouraged
++to hack at and contribute to the project.
++
++Workflow:
++
++The Application developer registers an application and uploads the POT file.
++He also gives the file version. The application will treat each version of the
++PO file as a different file. The developer may opt for automatic
++translation, in which case all the strings available in the database will
++be translated into all the languages available and saved as drafts.
++Similarly, any translation by a non authorised translator will also be
++saved as drafts as and when they are done. The developer, and anyone
++authorised by him can approve of drafts, wholly or partially and merge them
++into the official version. This official version will be presented to all
++translators who wish to translate the file wholly or partially.
++
++All translations of strings in all official versions will be added to the
++database. In case of more than one translation of a string into a given
++lanuguage, all translations will be added and it is left to individual
++developers to choose the one they want.
++
++There will be a facility for experts in particular languages to review the
++database and cull out obviously incorrect translations, correct spellings,
++mark any one translation as 'preferred' and remove almost identical duplic
++ates. 
++
++Translators will be able to use the online interface as well as upload
++translations made offline. Submitting translations by email will also be
++catered to, but this will not have an automatic interface. The developer
++will have to accept responsibility for accepting email submissions and the
++translator will have to get the consent of the developer to submit by
++email.
++
++Proposed Features:
++------------------
++
++Statistics:
++
++The application will provide detailed statistics of the number of
++strings translated. This can also be filtered according to the project,
++language, translator as well as different project versions.
++
++Online Review:
++
++An system for reviewing the translations online will be present so as to
++help trusted reviewers to just login to the system and review the
++translations. 
++
++Consistency Checking:
++
++The application will automatically check the consistency of the
++translations and will report errors if any for fixes. In case of a
++broken translation, the official version will be switched to the last
++sane translation until the broken [but newer] version is fixed and
++committed.
++
++Version Control:
++
++A basic form of version control will be present in the app. It will be
++able to track translations of the same application across different
++versions and will also allow merging & diffing between the
++versions. Also, it will make sure translations are never lost.
++
++Downloads:
++
++Translators will be able to download tarballs of translated files
++according to projects, project versions and languages. This will help in
++case they want to translate offline.
++
++Translated UI:
++
++The UI of the application itself will be translated into various indian
++langauges so as to allow translators use the application in their own
++native language.
++
++Extensive Online Documentation:
++
++Documentation is very important in a project and we will provide an
++extensive documentation for the application so that it's easy for the
++translators / admins to pick it up and start using.
++
++Email Interface:
++
++As already pointed out, we intend to provide an Email interface to the
++application so that authenticated translators can recieve untranslated
++strings and send translations by Email.
++
++Screenshot Gallery:
++
++There will be a screenhot gallery which will have screenshots of various
++translated applications to inspire more people to join the i18n / l10n
++scene as well as to show the status of translations for a particular
++language / project.
++
++Schedule:
++
++We will have a server up and running with a basic version of the
++application within a month of starting the project. Working with active
++developers and translators, the application will be fine-tuned over a
++period of 6 months to a year.
++
++Proposed Roadmap:
++
++01 Month:
++   * Database structure and translation user interface - basic functionality
++   * One language
++   * Beta 1 release
++
++03 Months:
++   * Complete admin and user interface added
++   * Any number of languages
++
++06 Months:
++   * Handling of diffs, statistics, reports - complete functionality
++   * Beta 2 release.
++
++08 Months:
++   * Addition of email interface and interface for translation of documents
++   * Bug fixes and UI translations into at least 3 languages.
++   * First Release Candidate release.
++
++10 Months:
++   * Factoring
++   * More UI Translations and documentation.
++   * Second Release Candidate release.
++
++11 Months:
++   * Feature freeze.
++   * Big fixes, UI translations.
++   * More documentation.
++   * Third Release Candidate release.
++
++12 Months:
++   * More bug fixing.
++   * Clearing up Docs & UI translations.
++   * First stable release.
++
++The timeline is dependent on the amount of response we get from testers and
++and translators - features will be added and modified in response to the
++feedback.
++
++
++  
++Funding:
++
++1. We'll initially require 6 months funding to create the application
++   with the most important features. Preferably we'd like to receive an
++   additional 6 months of funding to incorporate more advanced features
++   like machine translation and other nifty things as well as doing a
++   lot of bug fixing, achieve full UI translations and writing test
++   cases, etc.
++   
++2. Hosting space with root access along with Subversion, Python, Apache
++   mod_python, PostgreSQL and a few GB of diskspace - $400 per year is
++   the going rate.   
++
++Developers:
++
++The developers are:
++
++1. Baishampayan Ghose: A Computer Sci. & Engg. Student & a Free Software
++   developer. I am an experienced Python developer and a active member
++   of the Free Software community. I have some i18n experience while
++   leading the Bengali translation effort of Debian-Installer &
++   Drupal. I am also a member of the Free Software Foundation of India
++   working committee.
++   Email - b.ghose at gnu.org.in
++
++2. Kenneth Gonsalves: An Free & Open source Developer. Resume is
++   http://avsap.org.in
++   Email - lawgon at thenilgiris.com
++
++Other developers will be welcome to join the project which will initially
++be hosted at berlios.de
+
+
+
+From ghoseb at berlios.de  Tue Nov 15 13:05:04 2005
+From: ghoseb at berlios.de (ghoseb at BerliOS)
+Date: Tue, 15 Nov 2005 13:05:04 +0100
+Subject: [Panini-svn] r2 - trunk
+Message-ID: <200511151205.jAFC54XL010794@sheep.berlios.de>
+
+Author: ghoseb
+Date: 2005-11-15 13:04:56 +0100 (Tue, 15 Nov 2005)
+New Revision: 2
+
+Removed:
+   trunk/2005-10-25-ircmeet.txt
+   trunk/egovspecs.txt
+   trunk/i18nspecs.txt
+   trunk/proposal.txt
+Log:
+Deleting a b0rked import
+
+Deleted: trunk/2005-10-25-ircmeet.txt
+===================================================================
+--- trunk/2005-10-25-ircmeet.txt	2005-11-15 11:57:57 UTC (rev 1)
++++ trunk/2005-10-25-ircmeet.txt	2005-11-15 12:04:56 UTC (rev 2)
+@@ -1,64 +0,0 @@
+-After an IRC meet on Tue Oct 25, 2005 we reached a genral consensus on
+-the following features --
+-
+-* Whether we will write an application or provide a service to the
+-  people -- To be decided later
+-
+-* Statistics -- Must have  
+-
+-* Online Review -- Must have
+-
+-* Consistency Checking -- Must have
+-
+-* Version Control -- A basic form of VC should be there, nothing too
+-  ambitious, but there will be a way to mark a PO file to be a part of x
+-  version of y app while uploading. The app will in any case treat PO
+-  files of different version as separate files. So in a way, the VC will
+-  be at a higher level than the app itself
+-
+-* User Profiles -- Unnecessary
+-
+-* Management Console -- Not needed as volunteers will be able to take up
+-  work via the stats page itself
+-
+-* Downloads -- A way to filter translations according to language,
+-  product, etc. and download tarballs
+-
+-* Minor Points
+-  -- Translated UI
+-  -- Extensive Online Documentation
+-  -- Email Interface
+-  -- Screenshot Gallery (?)
+-
+-* TODO -- Think of more features to put in  
+-
+-It was also decided that we will try to hack on the Entrans JavaScript
+-code to do the keymaps and integrate with our app. We'll acknowledge
+-Entrans as the source of that code.
+-  
+-We have to state why we are doing a separate project and not joining an
+-existing one: rosetta: not free pootle: in python, but no rdbms backend,
+-so will not scale wordforge site itself seems to be broken.
+-
+-entrans: i personaly cannot join it as the languages are php and
+-mysql. On the other hand it is an indian project with committed indian
+-developers on it. We are also planning to use some of their javascript
+-code. On the other hand, there is no project description so i dont know
+-what they are planning.
+-
+-What software are we going to use and why?
+--- We'll of course use Django + PostgreSQL [+Apache/mod_python]
+-
+-storage of pot and po files in the rdbms or on the filesystem?
+-
+-django stores files and images on the filesystem with the path to the
+-file in the database (default behaviour)
+--- We'll have to hack Django in such a way that we can store the
+-POTfiles in the DB itself and not just the paths. [I guess it's very
+-easily achievable since the PO file contains are part of the Model in
+-any way]
+-
+-Can we use trac+svn in any manner?
+--- We'll have to investigate that, as I don't know anything about that
+-at the moment. But if trac has a pluggable API which we can hook into
+-via Django, then of course, why not?
+
+Deleted: trunk/egovspecs.txt
+===================================================================
+--- trunk/egovspecs.txt	2005-11-15 11:57:57 UTC (rev 1)
++++ trunk/egovspecs.txt	2005-11-15 12:04:56 UTC (rev 2)
+@@ -1,7 +0,0 @@
+-Draft specs for egov project
+-
+-Required reading: http://www.egov4dev.org/
+-
+-Introduction:
+-
+-put a general introduction here
+\ No newline at end of file
+
+Deleted: trunk/i18nspecs.txt
+===================================================================
+--- trunk/i18nspecs.txt	2005-11-15 11:57:57 UTC (rev 1)
++++ trunk/i18nspecs.txt	2005-11-15 12:04:56 UTC (rev 2)
+@@ -1,56 +0,0 @@
+-Web Based Translation / Translator Management Application
+----------------------------------------------------------
+-
+-We are looking at building a web based translator / translation
+-management application. These days, i18n / l10n projects mostly get
+-translations done from translators by exchanging PO files via Email
+-which is not only slow, but also a very cumbersome process. It doesn't
+-allow the project admin to track changes to the PO file and also has no
+-scope to track contributions from a given translator. Moreover, with so
+-many projects to be translated and so few people participating, it's
+-impractical to translate most common strings automatically. There should
+-also be a way to remember translations so as to save time in further
+-translations and also assure a certain level of consistency of
+-translations among all applications. The major issues that are being
+-faced by most l10n groups today can be summarised as below --
+-
+-* Lack of consistency among translations
+-* Lack of any translation memory
+-* Inefficient use of human resources
+-* Lack of decent machine translation facilities
+-* Lack of versioning information in translations
+-* Mostly complicated translation tools
+-* Desktop or web based apps are the only ways to do translation
+-* Lack of a coordinated effort among different teams
+-* There is no way to contribute in small parts
+-* No easy way to get the PO files as and when required
+-* No new contributors are coming up
+-* The overall process of getting something translated is too long
+-
+-To solve the above problems and to make the l10n work much smoother, we
+-are proposing a web based application which will also act as a
+-centralised repository of all Indic l10n work. It will act as the
+-ultimate resource for all l10n volunteers. People will be able to
+-contribute their translations in a very easy and user friendly way. The
+-web based tool intends to achieve the following --
+-
+-* Act as a central repository of all Indic translations across all
+-  products / languages.
+-* Make the job of the translator much easier by providing a web based
+-  interface.
+-* Make reviewing easy by clearly separating the reviewed and unreviewed
+-  messages [Once click access to unreviewed strings].
+-* Make it easy for beginners to contribute to the IndLinux project.
+-* Always provide up to date POT files by monitoring upstream changes.
+-* Make sure translations are never lost.
+-* Make it easy for new / small language teams to start translating.
+-* Provide an email interface
+-* Shorten the translation <-> review -> commit process
+-
+-TODO: Fix the text and add some more points [must write around 1k
+-words]. We also need to highlight translator management features, like
+-how it will manage multiple teams of translators, do versioning of
+-translations, etc. We also need to take a look at the features of
+-Rosetta [http://lauchpad.net/rosetta] & Pootle
+-[http://pootle.wordforge.org] and see which  of the good features we need.
+-
+
+Deleted: trunk/proposal.txt
+===================================================================
+--- trunk/proposal.txt	2005-11-15 11:57:57 UTC (rev 1)
++++ trunk/proposal.txt	2005-11-15 12:04:56 UTC (rev 2)
+@@ -1,223 +0,0 @@
+-Proposal for an Integrated Translation Management Application
+--------------------------------------------------------------
+-
+-Synopsis: 
+-
+-Translation of free & open source applications - like free & open source
+-applications themselves, depend on the whims of would-be
+-translators. There is a need for an application that will both cater to
+-the need of individual translators to 'scratch their itch' and translate
+-as much as they want of portions they want and at the same time allow
+-the application developer to coordinate the efforts of individuals and
+-maintain an adequate level of accuracy and consistency.
+-
+-The application should cater to both sporadic or 'one-off' online
+-translation efforts and more consistent off-line efforts.
+-
+-In addition the application should build a basic database of strings
+-with translations in the languages catered to - and offer either
+-automatic translation of strings already in the database, or hints for
+-already translated strings.
+-
+-The application should, at a later stage cater to translation of
+-documentation - which has to be served to the translator para or section
+-wise unlike translation of source which is served string by string.
+-
+-It goes without saying that the application should be free software,
+-multiplatform and multilingual. It is also clear that any such
+-application has to be web based.
+-
+-Existing efforts:
+-
+-We have investigated Rosetta [https://launchpad.net/rosetta], Pootle
+-[http://pootle.wordforge.org/] and Entrans [http://entrans.sf.net].
+-Rosetta is proprietory software. Pootle, written in python has the idea
+-correct, but it uses a filesystem to store everything and probably wont
+-scale. Entrans uses PHP and MySQL, which we feel are not stable or
+-secure enough for an application of this nature - and from the
+-documentation does not appear to have the comprehensive aims of this
+-project. However elements of it's user interface are good and could be
+-incorporated into this project.
+-
+-Platform:
+-
+-We propose using the Python scripting language with PostgreSQL RDBMS as
+-a backend. The webserver will be Apache. We will be using other tools
+-and frameworks not limited to Django, Subversion, Plone and Trac for
+-scripting various parts of the project. Both Python and PostgreSQL are
+-stable, mature and inherently secure and used worldwide on an immense
+-range of products and applications. Further, python being an easy to
+-master scripting language, more non-technical people will be encouraged
+-to hack at and contribute to the project.
+-
+-Workflow:
+-
+-The Application developer registers an application and uploads the POT file.
+-He also gives the file version. The application will treat each version of the
+-PO file as a different file. The developer may opt for automatic
+-translation, in which case all the strings available in the database will
+-be translated into all the languages available and saved as drafts.
+-Similarly, any translation by a non authorised translator will also be
+-saved as drafts as and when they are done. The developer, and anyone
+-authorised by him can approve of drafts, wholly or partially and merge them
+-into the official version. This official version will be presented to all
+-translators who wish to translate the file wholly or partially.
+-
+-All translations of strings in all official versions will be added to the
+-database. In case of more than one translation of a string into a given
+-lanuguage, all translations will be added and it is left to individual
+-developers to choose the one they want.
+-
+-There will be a facility for experts in particular languages to review the
+-database and cull out obviously incorrect translations, correct spellings,
+-mark any one translation as 'preferred' and remove almost identical duplic
+-ates. 
+-
+-Translators will be able to use the online interface as well as upload
+-translations made offline. Submitting translations by email will also be
+-catered to, but this will not have an automatic interface. The developer
+-will have to accept responsibility for accepting email submissions and the
+-translator will have to get the consent of the developer to submit by
+-email.
+-
+-Proposed Features:
+-------------------
+-
+-Statistics:
+-
+-The application will provide detailed statistics of the number of
+-strings translated. This can also be filtered according to the project,
+-language, translator as well as different project versions.
+-
+-Online Review:
+-
+-An system for reviewing the translations online will be present so as to
+-help trusted reviewers to just login to the system and review the
+-translations. 
+-
+-Consistency Checking:
+-
+-The application will automatically check the consistency of the
+-translations and will report errors if any for fixes. In case of a
+-broken translation, the official version will be switched to the last
+-sane translation until the broken [but newer] version is fixed and
+-committed.
+-
+-Version Control:
+-
+-A basic form of version control will be present in the app. It will be
+-able to track translations of the same application across different
+-versions and will also allow merging & diffing between the
+-versions. Also, it will make sure translations are never lost.
+-
+-Downloads:
+-
+-Translators will be able to download tarballs of translated files
+-according to projects, project versions and languages. This will help in
+-case they want to translate offline.
+-
+-Translated UI:
+-
+-The UI of the application itself will be translated into various indian
+-langauges so as to allow translators use the application in their own
+-native language.
+-
+-Extensive Online Documentation:
+-
+-Documentation is very important in a project and we will provide an
+-extensive documentation for the application so that it's easy for the
+-translators / admins to pick it up and start using.
+-
+-Email Interface:
+-
+-As already pointed out, we intend to provide an Email interface to the
+-application so that authenticated translators can recieve untranslated
+-strings and send translations by Email.
+-
+-Screenshot Gallery:
+-
+-There will be a screenhot gallery which will have screenshots of various
+-translated applications to inspire more people to join the i18n / l10n
+-scene as well as to show the status of translations for a particular
+-language / project.
+-
+-Schedule:
+-
+-We will have a server up and running with a basic version of the
+-application within a month of starting the project. Working with active
+-developers and translators, the application will be fine-tuned over a
+-period of 6 months to a year.
+-
+-Proposed Roadmap:
+-
+-01 Month:
+-   * Database structure and translation user interface - basic functionality
+-   * One language
+-   * Beta 1 release
+-
+-03 Months:
+-   * Complete admin and user interface added
+-   * Any number of languages
+-
+-06 Months:
+-   * Handling of diffs, statistics, reports - complete functionality
+-   * Beta 2 release.
+-
+-08 Months:
+-   * Addition of email interface and interface for translation of documents
+-   * Bug fixes and UI translations into at least 3 languages.
+-   * First Release Candidate release.
+-
+-10 Months:
+-   * Factoring
+-   * More UI Translations and documentation.
+-   * Second Release Candidate release.
+-
+-11 Months:
+-   * Feature freeze.
+-   * Big fixes, UI translations.
+-   * More documentation.
+-   * Third Release Candidate release.
+-
+-12 Months:
+-   * More bug fixing.
+-   * Clearing up Docs & UI translations.
+-   * First stable release.
+-
+-The timeline is dependent on the amount of response we get from testers and
+-and translators - features will be added and modified in response to the
+-feedback.
+-
+-
+-  
+-Funding:
+-
+-1. We'll initially require 6 months funding to create the application
+-   with the most important features. Preferably we'd like to receive an
+-   additional 6 months of funding to incorporate more advanced features
+-   like machine translation and other nifty things as well as doing a
+-   lot of bug fixing, achieve full UI translations and writing test
+-   cases, etc.
+-   
+-2. Hosting space with root access along with Subversion, Python, Apache
+-   mod_python, PostgreSQL and a few GB of diskspace - $400 per year is
+-   the going rate.   
+-
+-Developers:
+-
+-The developers are:
+-
+-1. Baishampayan Ghose: A Computer Sci. & Engg. Student & a Free Software
+-   developer. I am an experienced Python developer and a active member
+-   of the Free Software community. I have some i18n experience while
+-   leading the Bengali translation effort of Debian-Installer &
+-   Drupal. I am also a member of the Free Software Foundation of India
+-   working committee.
+-   Email - b.ghose at gnu.org.in
+-
+-2. Kenneth Gonsalves: An Free & Open source Developer. Resume is
+-   http://avsap.org.in
+-   Email - lawgon at thenilgiris.com
+-
+-Other developers will be welcome to join the project which will initially
+-be hosted at berlios.de
+
+
+
+From lawgon at thenilgiris.com  Tue Nov 15 13:03:28 2005
+From: lawgon at thenilgiris.com (Kenneth Gonsalves)
+Date: Tue, 15 Nov 2005 17:33:28 +0530
+Subject: [Panini-svn] r1 - / trunk
+In-Reply-To: <200511151157.jAFBvxIj004618@sheep.berlios.de>
+References: <200511151157.jAFBvxIj004618@sheep.berlios.de>
+Message-ID: <200511151733.28957.lawgon@thenilgiris.com>
+
+On Tuesday 15 Nov 2005 5:27 pm, ghoseb at BerliOS wrote:
+> ?trunk/
+> ? ?trunk/2005-10-25-ircmeet.txt
+> ? ?trunk/egovspecs.txt
+> ? ?trunk/i18nspecs.txt
+> ? ?trunk/proposal.txt
+
+ahh - should be under trunk/panini/docs
+
+-- 
+regards
+kg
+
+http://www.livejournal.com/users/lawgon
+tally ho! http://avsap.org.in
+?????????? ?????!
+
+
+From ghoseb at berlios.de  Tue Nov 15 13:06:33 2005
+From: ghoseb at berlios.de (ghoseb at BerliOS)
+Date: Tue, 15 Nov 2005 13:06:33 +0100
+Subject: [Panini-svn] r3 - in trunk: . docs
+Message-ID: <200511151206.jAFC6XvE011880@sheep.berlios.de>
+
+Author: ghoseb
+Date: 2005-11-15 13:06:28 +0100 (Tue, 15 Nov 2005)
+New Revision: 3
+
+Added:
+   trunk/docs/
+   trunk/docs/2005-10-25-ircmeet.txt
+   trunk/docs/egovspecs.txt
+   trunk/docs/i18nspecs.txt
+   trunk/docs/proposal.txt
+Log:
+Initial import
+
+Added: trunk/docs/2005-10-25-ircmeet.txt
+===================================================================
+--- trunk/docs/2005-10-25-ircmeet.txt	2005-11-15 12:04:56 UTC (rev 2)
++++ trunk/docs/2005-10-25-ircmeet.txt	2005-11-15 12:06:28 UTC (rev 3)
+@@ -0,0 +1,64 @@
++After an IRC meet on Tue Oct 25, 2005 we reached a genral consensus on
++the following features --
++
++* Whether we will write an application or provide a service to the
++  people -- To be decided later
++
++* Statistics -- Must have  
++
++* Online Review -- Must have
++
++* Consistency Checking -- Must have
++
++* Version Control -- A basic form of VC should be there, nothing too
++  ambitious, but there will be a way to mark a PO file to be a part of x
++  version of y app while uploading. The app will in any case treat PO
++  files of different version as separate files. So in a way, the VC will
++  be at a higher level than the app itself
++
++* User Profiles -- Unnecessary
++
++* Management Console -- Not needed as volunteers will be able to take up
++  work via the stats page itself
++
++* Downloads -- A way to filter translations according to language,
++  product, etc. and download tarballs
++
++* Minor Points
++  -- Translated UI
++  -- Extensive Online Documentation
++  -- Email Interface
++  -- Screenshot Gallery (?)
++
++* TODO -- Think of more features to put in  
++
++It was also decided that we will try to hack on the Entrans JavaScript
++code to do the keymaps and integrate with our app. We'll acknowledge
++Entrans as the source of that code.
++  
++We have to state why we are doing a separate project and not joining an
++existing one: rosetta: not free pootle: in python, but no rdbms backend,
++so will not scale wordforge site itself seems to be broken.
++
++entrans: i personaly cannot join it as the languages are php and
++mysql. On the other hand it is an indian project with committed indian
++developers on it. We are also planning to use some of their javascript
++code. On the other hand, there is no project description so i dont know
++what they are planning.
++
++What software are we going to use and why?
++-- We'll of course use Django + PostgreSQL [+Apache/mod_python]
++
++storage of pot and po files in the rdbms or on the filesystem?
++
++django stores files and images on the filesystem with the path to the
++file in the database (default behaviour)
++-- We'll have to hack Django in such a way that we can store the
++POTfiles in the DB itself and not just the paths. [I guess it's very
++easily achievable since the PO file contains are part of the Model in
++any way]
++
++Can we use trac+svn in any manner?
++-- We'll have to investigate that, as I don't know anything about that
++at the moment. But if trac has a pluggable API which we can hook into
++via Django, then of course, why not?
+
+Added: trunk/docs/egovspecs.txt
+===================================================================
+--- trunk/docs/egovspecs.txt	2005-11-15 12:04:56 UTC (rev 2)
++++ trunk/docs/egovspecs.txt	2005-11-15 12:06:28 UTC (rev 3)
+@@ -0,0 +1,7 @@
++Draft specs for egov project
++
++Required reading: http://www.egov4dev.org/
++
++Introduction:
++
++put a general introduction here
+\ No newline at end of file
+
+Added: trunk/docs/i18nspecs.txt
+===================================================================
+--- trunk/docs/i18nspecs.txt	2005-11-15 12:04:56 UTC (rev 2)
++++ trunk/docs/i18nspecs.txt	2005-11-15 12:06:28 UTC (rev 3)
+@@ -0,0 +1,56 @@
++Web Based Translation / Translator Management Application
++---------------------------------------------------------
++
++We are looking at building a web based translator / translation
++management application. These days, i18n / l10n projects mostly get
++translations done from translators by exchanging PO files via Email
++which is not only slow, but also a very cumbersome process. It doesn't
++allow the project admin to track changes to the PO file and also has no
++scope to track contributions from a given translator. Moreover, with so
++many projects to be translated and so few people participating, it's
++impractical to translate most common strings automatically. There should
++also be a way to remember translations so as to save time in further
++translations and also assure a certain level of consistency of
++translations among all applications. The major issues that are being
++faced by most l10n groups today can be summarised as below --
++
++* Lack of consistency among translations
++* Lack of any translation memory
++* Inefficient use of human resources
++* Lack of decent machine translation facilities
++* Lack of versioning information in translations
++* Mostly complicated translation tools
++* Desktop or web based apps are the only ways to do translation
++* Lack of a coordinated effort among different teams
++* There is no way to contribute in small parts
++* No easy way to get the PO files as and when required
++* No new contributors are coming up
++* The overall process of getting something translated is too long
++
++To solve the above problems and to make the l10n work much smoother, we
++are proposing a web based application which will also act as a
++centralised repository of all Indic l10n work. It will act as the
++ultimate resource for all l10n volunteers. People will be able to
++contribute their translations in a very easy and user friendly way. The
++web based tool intends to achieve the following --
++
++* Act as a central repository of all Indic translations across all
++  products / languages.
++* Make the job of the translator much easier by providing a web based
++  interface.
++* Make reviewing easy by clearly separating the reviewed and unreviewed
++  messages [Once click access to unreviewed strings].
++* Make it easy for beginners to contribute to the IndLinux project.
++* Always provide up to date POT files by monitoring upstream changes.
++* Make sure translations are never lost.
++* Make it easy for new / small language teams to start translating.
++* Provide an email interface
++* Shorten the translation <-> review -> commit process
++
++TODO: Fix the text and add some more points [must write around 1k
++words]. We also need to highlight translator management features, like
++how it will manage multiple teams of translators, do versioning of
++translations, etc. We also need to take a look at the features of
++Rosetta [http://lauchpad.net/rosetta] & Pootle
++[http://pootle.wordforge.org] and see which  of the good features we need.
++
+
+Added: trunk/docs/proposal.txt
+===================================================================
+--- trunk/docs/proposal.txt	2005-11-15 12:04:56 UTC (rev 2)
++++ trunk/docs/proposal.txt	2005-11-15 12:06:28 UTC (rev 3)
+@@ -0,0 +1,223 @@
++Proposal for an Integrated Translation Management Application
++-------------------------------------------------------------
++
++Synopsis: 
++
++Translation of free & open source applications - like free & open source
++applications themselves, depend on the whims of would-be
++translators. There is a need for an application that will both cater to
++the need of individual translators to 'scratch their itch' and translate
++as much as they want of portions they want and at the same time allow
++the application developer to coordinate the efforts of individuals and
++maintain an adequate level of accuracy and consistency.
++
++The application should cater to both sporadic or 'one-off' online
++translation efforts and more consistent off-line efforts.
++
++In addition the application should build a basic database of strings
++with translations in the languages catered to - and offer either
++automatic translation of strings already in the database, or hints for
++already translated strings.
++
++The application should, at a later stage cater to translation of
++documentation - which has to be served to the translator para or section
++wise unlike translation of source which is served string by string.
++
++It goes without saying that the application should be free software,
++multiplatform and multilingual. It is also clear that any such
++application has to be web based.
++
++Existing efforts:
++
++We have investigated Rosetta [https://launchpad.net/rosetta], Pootle
++[http://pootle.wordforge.org/] and Entrans [http://entrans.sf.net].
++Rosetta is proprietory software. Pootle, written in python has the idea
++correct, but it uses a filesystem to store everything and probably wont
++scale. Entrans uses PHP and MySQL, which we feel are not stable or
++secure enough for an application of this nature - and from the
++documentation does not appear to have the comprehensive aims of this
++project. However elements of it's user interface are good and could be
++incorporated into this project.
++
++Platform:
++
++We propose using the Python scripting language with PostgreSQL RDBMS as
++a backend. The webserver will be Apache. We will be using other tools
++and frameworks not limited to Django, Subversion, Plone and Trac for
++scripting various parts of the project. Both Python and PostgreSQL are
++stable, mature and inherently secure and used worldwide on an immense
++range of products and applications. Further, python being an easy to
++master scripting language, more non-technical people will be encouraged
++to hack at and contribute to the project.
++
++Workflow:
++
++The Application developer registers an application and uploads the POT file.
++He also gives the file version. The application will treat each version of the
++PO file as a different file. The developer may opt for automatic
++translation, in which case all the strings available in the database will
++be translated into all the languages available and saved as drafts.
++Similarly, any translation by a non authorised translator will also be
++saved as drafts as and when they are done. The developer, and anyone
++authorised by him can approve of drafts, wholly or partially and merge them
++into the official version. This official version will be presented to all
++translators who wish to translate the file wholly or partially.
++
++All translations of strings in all official versions will be added to the
++database. In case of more than one translation of a string into a given
++lanuguage, all translations will be added and it is left to individual
++developers to choose the one they want.
++
++There will be a facility for experts in particular languages to review the
++database and cull out obviously incorrect translations, correct spellings,
++mark any one translation as 'preferred' and remove almost identical duplic
++ates. 
++
++Translators will be able to use the online interface as well as upload
++translations made offline. Submitting translations by email will also be
++catered to, but this will not have an automatic interface. The developer
++will have to accept responsibility for accepting email submissions and the
++translator will have to get the consent of the developer to submit by
++email.
++
++Proposed Features:
++------------------
++
++Statistics:
++
++The application will provide detailed statistics of the number of
++strings translated. This can also be filtered according to the project,
++language, translator as well as different project versions.
++
++Online Review:
++
++An system for reviewing the translations online will be present so as to
++help trusted reviewers to just login to the system and review the
++translations. 
++
++Consistency Checking:
++
++The application will automatically check the consistency of the
++translations and will report errors if any for fixes. In case of a
++broken translation, the official version will be switched to the last
++sane translation until the broken [but newer] version is fixed and
++committed.
++
++Version Control:
++
++A basic form of version control will be present in the app. It will be
++able to track translations of the same application across different
++versions and will also allow merging & diffing between the
++versions. Also, it will make sure translations are never lost.
++
++Downloads:
++
++Translators will be able to download tarballs of translated files
++according to projects, project versions and languages. This will help in
++case they want to translate offline.
++
++Translated UI:
++
++The UI of the application itself will be translated into various indian
++langauges so as to allow translators use the application in their own
++native language.
++
++Extensive Online Documentation:
++
++Documentation is very important in a project and we will provide an
++extensive documentation for the application so that it's easy for the
++translators / admins to pick it up and start using.
++
++Email Interface:
++
++As already pointed out, we intend to provide an Email interface to the
++application so that authenticated translators can recieve untranslated
++strings and send translations by Email.
++
++Screenshot Gallery:
++
++There will be a screenhot gallery which will have screenshots of various
++translated applications to inspire more people to join the i18n / l10n
++scene as well as to show the status of translations for a particular
++language / project.
++
++Schedule:
++
++We will have a server up and running with a basic version of the
++application within a month of starting the project. Working with active
++developers and translators, the application will be fine-tuned over a
++period of 6 months to a year.
++
++Proposed Roadmap:
++
++01 Month:
++   * Database structure and translation user interface - basic functionality
++   * One language
++   * Beta 1 release
++
++03 Months:
++   * Complete admin and user interface added
++   * Any number of languages
++
++06 Months:
++   * Handling of diffs, statistics, reports - complete functionality
++   * Beta 2 release.
++
++08 Months:
++   * Addition of email interface and interface for translation of documents
++   * Bug fixes and UI translations into at least 3 languages.
++   * First Release Candidate release.
++
++10 Months:
++   * Factoring
++   * More UI Translations and documentation.
++   * Second Release Candidate release.
++
++11 Months:
++   * Feature freeze.
++   * Big fixes, UI translations.
++   * More documentation.
++   * Third Release Candidate release.
++
++12 Months:
++   * More bug fixing.
++   * Clearing up Docs & UI translations.
++   * First stable release.
++
++The timeline is dependent on the amount of response we get from testers and
++and translators - features will be added and modified in response to the
++feedback.
++
++
++  
++Funding:
++
++1. We'll initially require 6 months funding to create the application
++   with the most important features. Preferably we'd like to receive an
++   additional 6 months of funding to incorporate more advanced features
++   like machine translation and other nifty things as well as doing a
++   lot of bug fixing, achieve full UI translations and writing test
++   cases, etc.
++   
++2. Hosting space with root access along with Subversion, Python, Apache
++   mod_python, PostgreSQL and a few GB of diskspace - $400 per year is
++   the going rate.   
++
++Developers:
++
++The developers are:
++
++1. Baishampayan Ghose: A Computer Sci. & Engg. Student & a Free Software
++   developer. I am an experienced Python developer and a active member
++   of the Free Software community. I have some i18n experience while
++   leading the Bengali translation effort of Debian-Installer &
++   Drupal. I am also a member of the Free Software Foundation of India
++   working committee.
++   Email - b.ghose at gnu.org.in
++
++2. Kenneth Gonsalves: An Free & Open source Developer. Resume is
++   http://avsap.org.in
++   Email - lawgon at thenilgiris.com
++
++Other developers will be welcome to join the project which will initially
++be hosted at berlios.de
+
+
+
+From lawgon at thenilgiris.com  Tue Nov 15 13:09:59 2005
+From: lawgon at thenilgiris.com (Kenneth Gonsalves)
+Date: Tue, 15 Nov 2005 17:39:59 +0530
+Subject: [Panini-svn] r3 - in trunk: . docs
+In-Reply-To: <200511151206.jAFC6XvE011880@sheep.berlios.de>
+References: <200511151206.jAFC6XvE011880@sheep.berlios.de>
+Message-ID: <200511151739.59815.lawgon@thenilgiris.com>
+
+On Tuesday 15 Nov 2005 5:36 pm, ghoseb at BerliOS wrote:
+> ?trunk/docs/
+> ? ?trunk/docs/2005-10-25-ircmeet.txt
+> ? ?trunk/docs/egovspecs.txt
+> ? ?trunk/docs/i18nspecs.txt
+> ? ?trunk/docs/proposal.txt
+
+no no no - trunk/panini/docs
+
+-- 
+regards
+kg
+
+http://www.livejournal.com/users/lawgon
+tally ho! http://avsap.org.in
+?????????? ?????!
+
+
+From lawgon at berlios.de  Wed Nov 16 12:18:12 2005
+From: lawgon at berlios.de (lawgon at BerliOS)
+Date: Wed, 16 Nov 2005 12:18:12 +0100
+Subject: [Panini-svn] r4 - trunk/docs
+Message-ID: <200511161118.jAGBICqs019991@sheep.berlios.de>
+
+Author: lawgon
+Date: 2005-11-16 12:18:09 +0100 (Wed, 16 Nov 2005)
+New Revision: 4
+
+Modified:
+   trunk/docs/proposal.txt
+Log:
+concurrent funding for proposal
+
+Modified: trunk/docs/proposal.txt
+===================================================================
+--- trunk/docs/proposal.txt	2005-11-15 12:06:28 UTC (rev 3)
++++ trunk/docs/proposal.txt	2005-11-16 11:18:09 UTC (rev 4)
+@@ -1,6 +1,6 @@
+-Proposal for an Integrated Translation Management Application
+--------------------------------------------------------------
++Proposal for Panini - an Integrated Translation Management Application
+ 
++
+ Synopsis: 
+ 
+ Translation of free & open source applications - like free & open source
+@@ -154,14 +154,17 @@
+    * Database structure and translation user interface - basic functionality
+    * One language
+    * Beta 1 release
++   * Service server on 'at your own risk' basis
+ 
+ 03 Months:
+    * Complete admin and user interface added
+    * Any number of languages
++   * Service server updated
+ 
+ 06 Months:
+    * Handling of diffs, statistics, reports - complete functionality
+    * Beta 2 release.
++   * Service server in production - 'at our risk basis'
+ 
+ 08 Months:
+    * Addition of email interface and interface for translation of documents
+@@ -192,6 +195,12 @@
+   
+ Funding:
+ 
++We are applying for two concurrent fellowships. We intend to develop the
++application on one hand, and, at the same time, set up a service for
++translators to use. The advantage of having a live service would be for
++active feedback for the application developement process, thus ensuring
++that the application does not wind up as academic vapourware.
++
+ 1. We'll initially require 6 months funding to create the application
+    with the most important features. Preferably we'd like to receive an
+    additional 6 months of funding to incorporate more advanced features
+@@ -200,8 +209,9 @@
+    cases, etc.
+    
+ 2. Hosting space with root access along with Subversion, Python, Apache
+-   mod_python, PostgreSQL and a few GB of diskspace - $400 per year is
+-   the going rate.   
++   mod_python, PostgreSQL and a few GB of diskspace - we will either get
++   hosted or will fund the hosting out of the fellowship amount for the
++   service server.
+ 
+ Developers:
+ 
+@@ -215,7 +225,7 @@
+    working committee.
+    Email - b.ghose at gnu.org.in
+ 
+-2. Kenneth Gonsalves: An Free & Open source Developer. Resume is
++2. Kenneth Gonsalves: A Free & Open source Developer. Resume is
+    http://avsap.org.in
+    Email - lawgon at thenilgiris.com
+ 
+
+
+
+From ghoseb at berlios.de  Wed Nov 16 17:44:38 2005
+From: ghoseb at berlios.de (ghoseb at BerliOS)
+Date: Wed, 16 Nov 2005 17:44:38 +0100
+Subject: [Panini-svn] r5 - trunk/docs
+Message-ID: <200511161644.jAGGicwO023963@sheep.berlios.de>
+
+Author: ghoseb
+Date: 2005-11-16 17:44:32 +0100 (Wed, 16 Nov 2005)
+New Revision: 5
+
+Modified:
+   trunk/docs/proposal.txt
+Log:
+Some formatting and minor changes
+
+
+Modified: trunk/docs/proposal.txt
+===================================================================
+--- trunk/docs/proposal.txt	2005-11-16 11:18:09 UTC (rev 4)
++++ trunk/docs/proposal.txt	2005-11-16 16:44:32 UTC (rev 5)
+@@ -1,151 +1,152 @@
+ Proposal for Panini - an Integrated Translation Management Application
++----------------------------------------------------------------------
+ 
+-
+ Synopsis: 
+ 
+ Translation of free & open source applications - like free & open source
+-applications themselves, depend on the whims of would-be
+-translators. There is a need for an application that will both cater to
++applications   themselves,    depend   on   the    whims   of   would-be
++translators. There is a need for  an application that will both cater to
+ the need of individual translators to 'scratch their itch' and translate
+-as much as they want of portions they want and at the same time allow
+-the application developer to coordinate the efforts of individuals and
++as much as  they want of portions  they want and at the  same time allow
++the application  developer to coordinate the efforts  of individuals and
+ maintain an adequate level of accuracy and consistency.
+ 
+-The application should cater to both sporadic or 'one-off' online
++The  application  should cater  to  both  sporadic  or 'one-off'  online
+ translation efforts and more consistent off-line efforts.
+ 
+-In addition the application should build a basic database of strings
+-with translations in the languages catered to - and offer either
+-automatic translation of strings already in the database, or hints for
++In addition  the application  should build a  basic database  of strings
++with  translations  in the  languages  catered  to  - and  offer  either
++automatic translation of  strings already in the database,  or hints for
+ already translated strings.
+ 
+-The application should, at a later stage cater to translation of
++The  application  should, at  a  later  stage  cater to  translation  of
+ documentation - which has to be served to the translator para or section
+ wise unlike translation of source which is served string by string.
+ 
+-It goes without saying that the application should be free software,
+-multiplatform and multilingual. It is also clear that any such
++It goes  without saying  that the application  should be  free software,
++multiplatform  and  multilingual.  It   is  also  clear  that  any  such
+ application has to be web based.
+ 
+ Existing efforts:
+ 
+-We have investigated Rosetta [https://launchpad.net/rosetta], Pootle
+-[http://pootle.wordforge.org/] and Entrans [http://entrans.sf.net].
+-Rosetta is proprietory software. Pootle, written in python has the idea
+-correct, but it uses a filesystem to store everything and probably wont
+-scale. Entrans uses PHP and MySQL, which we feel are not stable or
+-secure enough for an application of this nature - and from the
+-documentation does not appear to have the comprehensive aims of this
+-project. However elements of it's user interface are good and could be
++We  have  investigated  Rosetta [https://launchpad.net/rosetta],  Pootle
++[http://pootle.wordforge.org/]   and   Entrans  [http://entrans.sf.net].
++Rosetta is proprietory software. Pootle,  written in python has the idea
++correct, but it uses a  filesystem to store everything and probably wont
++scale.  Entrans uses  PHP and  MySQL, which  we feel  are not  stable or
++secure  enough  for  an  application  of  this nature  -  and  from  the
++documentation does  not appear  to have the  comprehensive aims  of this
++project. However elements  of it's user interface are  good and could be
+ incorporated into this project.
+ 
+ Platform:
+ 
+-We propose using the Python scripting language with PostgreSQL RDBMS as
+-a backend. The webserver will be Apache. We will be using other tools
+-and frameworks not limited to Django, Subversion, Plone and Trac for
+-scripting various parts of the project. Both Python and PostgreSQL are
+-stable, mature and inherently secure and used worldwide on an immense
+-range of products and applications. Further, python being an easy to
+-master scripting language, more non-technical people will be encouraged
++We propose using the Python  scripting language with PostgreSQL RDBMS as
++a backend.  The webserver will be  Apache. We will be  using other tools
++and frameworks  not limited  to Django, Subversion,  Plone and  Trac for
++scripting various parts  of the project. Both Python  and PostgreSQL are
++stable, mature  and inherently secure  and used worldwide on  an immense
++range of  products and  applications. Further, python  being an  easy to
++master scripting language, more  non-technical people will be encouraged
+ to hack at and contribute to the project.
+ 
+ Workflow:
+ 
+-The Application developer registers an application and uploads the POT file.
+-He also gives the file version. The application will treat each version of the
+-PO file as a different file. The developer may opt for automatic
+-translation, in which case all the strings available in the database will
+-be translated into all the languages available and saved as drafts.
+-Similarly, any translation by a non authorised translator will also be
+-saved as drafts as and when they are done. The developer, and anyone
+-authorised by him can approve of drafts, wholly or partially and merge them
+-into the official version. This official version will be presented to all
+-translators who wish to translate the file wholly or partially.
++The Application  developer registers an application and  uploads the POT
++file.  He also  gives the file version. The  application will treat each
++version of  the PO file as a  different file. The developer  may opt for
++automatic translation,  in which case  all the strings available  in the
++database will be  translated into all the languages  available and saved
++as drafts.   Similarly, any translation  by a non  authorised translator
++will also be  saved as drafts as and when they  are done. The developer,
++and anyone authorised by him  can approve of drafts, wholly or partially
++and merge them into the  official version. This official version will be
++presented to  all translators who wish  to translate the  file wholly or
++partially.
+ 
+-All translations of strings in all official versions will be added to the
+-database. In case of more than one translation of a string into a given
+-lanuguage, all translations will be added and it is left to individual
+-developers to choose the one they want.
++All translations  of strings in all  official versions will  be added to
++the database.  In case of more than  one translation of a  string into a
++given  lanuguage, all  translations  will be  added  and it  is left  to
++individual developers to choose the one they want.
+ 
+-There will be a facility for experts in particular languages to review the
+-database and cull out obviously incorrect translations, correct spellings,
+-mark any one translation as 'preferred' and remove almost identical duplic
+-ates. 
++There will be  a facility for experts in  particular languages to review
++the  database and  cull  out obviously  incorrect translations,  correct
++spellings,  mark any one  translation as  'preferred' and  remove almost
++identical duplic ates.
+ 
+-Translators will be able to use the online interface as well as upload
++Translators will be  able to use the online interface  as well as upload
+ translations made offline. Submitting translations by email will also be
+ catered to, but this will not have an automatic interface. The developer
+-will have to accept responsibility for accepting email submissions and the
+-translator will have to get the consent of the developer to submit by
+-email.
++will have  to accept responsibility for accepting  email submissions and
++the translator will  have to get the consent of  the developer to submit
++by email.
+ 
+ Proposed Features:
+ ------------------
+ 
+ Statistics:
+ 
+-The application will provide detailed statistics of the number of
+-strings translated. This can also be filtered according to the project,
++The  application  will provide  detailed  statistics  of  the number  of
++strings translated. This can also  be filtered according to the project,
+ language, translator as well as different project versions.
+ 
+ Online Review:
+ 
+ An system for reviewing the translations online will be present so as to
+-help trusted reviewers to just login to the system and review the
+-translations. 
++help  trusted reviewers  to  just login  to  the system  and review  the
++translations.
+ 
+ Consistency Checking:
+ 
+-The application will automatically check the consistency of the
+-translations and will report errors if any for fixes. In case of a
+-broken translation, the official version will be switched to the last
+-sane translation until the broken [but newer] version is fixed and
++The  application  will  automatically   check  the  consistency  of  the
++translations  and will  report errors  if any  for fixes.  In case  of a
++broken translation,  the official version  will be switched to  the last
++sane  translation until  the broken  [but  newer] version  is fixed  and
+ committed.
+ 
+ Version Control:
+ 
+-A basic form of version control will be present in the app. It will be
+-able to track translations of the same application across different
+-versions and will also allow merging & diffing between the
++A basic form of  version control will be present in the  app. It will be
++able  to track  translations of  the same  application  across different
++versions   and  will   also  allow   merging  &   diffing   between  the
+ versions. Also, it will make sure translations are never lost.
+ 
+ Downloads:
+ 
+-Translators will be able to download tarballs of translated files
++Translators  will  be able  to  download  tarballs  of translated  files
+ according to projects, project versions and languages. This will help in
+ case they want to translate offline.
+ 
+ Translated UI:
+ 
+-The UI of the application itself will be translated into various indian
+-langauges so as to allow translators use the application in their own
++The UI of the application  itself will be translated into various indian
++langauges so  as to allow translators  use the application  in their own
+ native language.
+ 
+ Extensive Online Documentation:
+ 
+-Documentation is very important in a project and we will provide an
+-extensive documentation for the application so that it's easy for the
++Documentation  is very important  in a  project and  we will  provide an
++extensive documentation  for the application  so that it's easy  for the
+ translators / admins to pick it up and start using.
+ 
+ Email Interface:
+ 
+-As already pointed out, we intend to provide an Email interface to the
+-application so that authenticated translators can recieve untranslated
++As already pointed  out, we intend to provide an  Email interface to the
++application so  that authenticated translators  can recieve untranslated
+ strings and send translations by Email.
+ 
+ Screenshot Gallery:
+ 
+ There will be a screenhot gallery which will have screenshots of various
+-translated applications to inspire more people to join the i18n / l10n
+-scene as well as to show the status of translations for a particular
++translated applications to  inspire more people to join  the i18n / l10n
++scene as  well as to  show the status  of translations for  a particular
+ language / project.
+ 
+ Schedule:
+ 
+-We will have a server up and running with a basic version of the
+-application within a month of starting the project. Working with active
+-developers and translators, the application will be fine-tuned over a
++We  will have  a  server up  and running  with  a basic  version of  the
++application within a month of  starting the project. Working with active
++developers and  translators, the application  will be fine-tuned  over a
+ period of 6 months to a year.
+ 
+ Proposed Roadmap:
+@@ -154,7 +155,7 @@
+    * Database structure and translation user interface - basic functionality
+    * One language
+    * Beta 1 release
+-   * Service server on 'at your own risk' basis
++   * Service server on `at your own risk' basis
+ 
+ 03 Months:
+    * Complete admin and user interface added
+@@ -164,7 +165,7 @@
+ 06 Months:
+    * Handling of diffs, statistics, reports - complete functionality
+    * Beta 2 release.
+-   * Service server in production - 'at our risk basis'
++   * Service server in production - `at our risk basis'
+ 
+ 08 Months:
+    * Addition of email interface and interface for translation of documents
+@@ -187,30 +188,30 @@
+    * Clearing up Docs & UI translations.
+    * First stable release.
+ 
+-The timeline is dependent on the amount of response we get from testers and
+-and translators - features will be added and modified in response to the
+-feedback.
++The timeline is dependent on the  amount of response we get from testers
++and and translators - features will be added and modified in response to
++the feedback.
+ 
+ 
+   
+ Funding:
+ 
+ We are applying for two concurrent fellowships. We intend to develop the
+-application on one hand, and, at the same time, set up a service for
+-translators to use. The advantage of having a live service would be for
+-active feedback for the application developement process, thus ensuring
++application on  one hand, and,  at the same  time, set up a  service for
++translators to use. The advantage of  having a live service would be for
++active feedback for the  application developement process, thus ensuring
+ that the application does not wind up as academic vapourware.
+ 
+-1. We'll initially require 6 months funding to create the application
+-   with the most important features. Preferably we'd like to receive an
+-   additional 6 months of funding to incorporate more advanced features
+-   like machine translation and other nifty things as well as doing a
+-   lot of bug fixing, achieve full UI translations and writing test
++1. We'll initially  require 6 months  funding to create  the application
++   with the most important features.  Preferably we'd like to receive an
++   additional 6 months of  funding to incorporate more advanced features
++   like machine  translation and other nifty  things as well  as doing a
++   lot  of bug  fixing, achieve  full UI  translations and  writing test
+    cases, etc.
+    
+-2. Hosting space with root access along with Subversion, Python, Apache
++2. Hosting space with root  access along with Subversion, Python, Apache
+    mod_python, PostgreSQL and a few GB of diskspace - we will either get
+-   hosted or will fund the hosting out of the fellowship amount for the
++   hosted or will fund the hosting  out of the fellowship amount for the
+    service server.
+ 
+ Developers:
+@@ -218,16 +219,16 @@
+ The developers are:
+ 
+ 1. Baishampayan Ghose: A Computer Sci. & Engg. Student & a Free Software
+-   developer. I am an experienced Python developer and a active member
+-   of the Free Software community. I have some i18n experience while
+-   leading the Bengali translation effort of Debian-Installer &
+-   Drupal. I am also a member of the Free Software Foundation of India
++   developer. I am  an experienced Python developer and  a active member
++   of the  Free Software  community. I have  some i18n  experience while
++   leading the Bengali translation  effort of Debian-Installer, Drupal &
++   Django. I am  also a member of the Free  Software Foundation of India
+    working committee.
+    Email - b.ghose at gnu.org.in
+ 
+-2. Kenneth Gonsalves: A Free & Open source Developer. Resume is
++2. Kenneth  Gonsalves:  A  Free  &  Open  source  Developer.  Resume  is
+    http://avsap.org.in
+    Email - lawgon at thenilgiris.com
+ 
+-Other developers will be welcome to join the project which will initially
+-be hosted at berlios.de
++Other developers, contributors will be welcome to join the project which
++will initially be hosted at panini.berlios.de
+
+
+
+From ghoseb at berlios.de  Thu Nov 17 10:00:08 2005
+From: ghoseb at berlios.de (ghoseb at BerliOS)
+Date: Thu, 17 Nov 2005 10:00:08 +0100
+Subject: [Panini-svn] r6 - trunk/docs
+Message-ID: <200511170900.jAH908uL032564@sheep.berlios.de>
+
+Author: ghoseb
+Date: 2005-11-17 09:59:58 +0100 (Thu, 17 Nov 2005)
+New Revision: 6
+
+Modified:
+   trunk/docs/proposal.txt
+Log:
+Added a few things ... final draft.
+
+
+Modified: trunk/docs/proposal.txt
+===================================================================
+--- trunk/docs/proposal.txt	2005-11-16 16:44:32 UTC (rev 5)
++++ trunk/docs/proposal.txt	2005-11-17 08:59:58 UTC (rev 6)
+@@ -12,7 +12,9 @@
+ maintain an adequate level of accuracy and consistency.
+ 
+ The  application  should cater  to  both  sporadic  or 'one-off'  online
+-translation efforts and more consistent off-line efforts.
++translation  efforts and  more  consistent off-line  efforts. Thus  it'd
++basically  be a  online web  based  application, but  will also  support
++offline contributions too.
+ 
+ In addition  the application  should build a  basic database  of strings
+ with  translations  in the  languages  catered  to  - and  offer  either
+@@ -42,13 +44,13 @@
+ Platform:
+ 
+ We propose using the Python  scripting language with PostgreSQL RDBMS as
+-a backend.  The webserver will be  Apache. We will be  using other tools
+-and frameworks  not limited  to Django, Subversion,  Plone and  Trac for
+-scripting various parts  of the project. Both Python  and PostgreSQL are
+-stable, mature  and inherently secure  and used worldwide on  an immense
+-range of  products and  applications. Further, python  being an  easy to
+-master scripting language, more  non-technical people will be encouraged
+-to hack at and contribute to the project.
++a backend.  The  webserver will be Apache. We will  be using other tools
++and frameworks not limited to  Django, Subversion and Trac for scripting
++various parts  of the  project. Both Python  and PostgreSQL  are stable,
++mature and inherently  secure and used worldwide on  an immense range of
++products  and applications.   Further, Python  being an  easy  to master
++scripting language, more non-technical people will be encouraged to hack
++at and contribute to the project.
+ 
+ Workflow:
+ 
+@@ -90,6 +92,12 @@
+ strings translated. This can also  be filtered according to the project,
+ language, translator as well as different project versions.
+ 
++Merging Translations:
++
++There will be provison for merging translations done through independent
++systems.  That will  avoid redundancy  and will  help in  making  use of
++pre-existing translations.
++
+ Online Review:
+ 
+ An system for reviewing the translations online will be present so as to
+@@ -192,8 +200,17 @@
+ and and translators - features will be added and modified in response to
+ the feedback.
+ 
++Commitment To Help Existing Language Teams:
+ 
+-  
++We are committed  towards helping existing language teams  in setting up
++the application  for them and  provide all assistance to  them regarding
++usage of  the application.   We have at  present talked to  two language
++teams, namely  the Oriya (or)  language team's Gora Mohanty,  the Nepali
++(np) language  team's Subir  B & the  Dzongkha (dz) team's  Pema Geyleg.
++Pradhanang.  We'll  work with them  in getting the  application deployed
++for  them  and  they will  help  us  by  providing translations  of  the
++interface, bug reports & general feedback.
++
+ Funding:
+ 
+ We are applying for two concurrent fellowships. We intend to develop the
+
+
+
+From lawgon at berlios.de  Thu Nov 17 12:09:00 2005
+From: lawgon at berlios.de (lawgon at BerliOS)
+Date: Thu, 17 Nov 2005 12:09:00 +0100
+Subject: [Panini-svn] r7 - trunk/docs
+Message-ID: <200511171109.jAHB900R015406@sheep.berlios.de>
+
+Author: lawgon
+Date: 2005-11-17 12:08:59 +0100 (Thu, 17 Nov 2005)
+New Revision: 7
+
+Modified:
+   trunk/docs/proposal.txt
+Log:
+some small changes
+
+Modified: trunk/docs/proposal.txt
+===================================================================
+--- trunk/docs/proposal.txt	2005-11-17 08:59:58 UTC (rev 6)
++++ trunk/docs/proposal.txt	2005-11-17 11:08:59 UTC (rev 7)
+@@ -12,8 +12,8 @@
+ maintain an adequate level of accuracy and consistency.
+ 
+ The  application  should cater  to  both  sporadic  or 'one-off'  online
+-translation  efforts and  more  consistent off-line  efforts. Thus  it'd
+-basically  be a  online web  based  application, but  will also  support
++translation  efforts and  more  consistent off-line  efforts. Thus  it will
++basically  be an  online web  based  application, but  will also  support
+ offline contributions too.
+ 
+ In addition  the application  should build a  basic database  of strings
+@@ -23,7 +23,8 @@
+ 
+ The  application  should, at  a  later  stage  cater to  translation  of
+ documentation - which has to be served to the translator para or section
+-wise unlike translation of source which is served string by string.
++wise unlike translation of source which is served string by string. This
++section should also strip all html/xml tags when offering for translation.
+ 
+ It goes  without saying  that the application  should be  free software,
+ multiplatform  and  multilingual.  It   is  also  clear  that  any  such
+
+
+
+From ghoseb at berlios.de  Thu Nov 17 12:42:13 2005
+From: ghoseb at berlios.de (ghoseb at BerliOS)
+Date: Thu, 17 Nov 2005 12:42:13 +0100
+Subject: [Panini-svn] r8 - trunk/docs
+Message-ID: <200511171142.jAHBgDUk029545@sheep.berlios.de>
+
+Author: ghoseb
+Date: 2005-11-17 12:42:07 +0100 (Thu, 17 Nov 2005)
+New Revision: 8
+
+Modified:
+   trunk/docs/proposal.txt
+Log:
+Some minor formatting
+
+
+Modified: trunk/docs/proposal.txt
+===================================================================
+--- trunk/docs/proposal.txt	2005-11-17 11:08:59 UTC (rev 7)
++++ trunk/docs/proposal.txt	2005-11-17 11:42:07 UTC (rev 8)
+@@ -12,8 +12,8 @@
+ maintain an adequate level of accuracy and consistency.
+ 
+ The  application  should cater  to  both  sporadic  or 'one-off'  online
+-translation  efforts and  more  consistent off-line  efforts. Thus  it will
+-basically  be an  online web  based  application, but  will also  support
++translation efforts  and more consistent off-line efforts.  Thus it will
++basically  be an  online web  based application,  but will  also support
+ offline contributions too.
+ 
+ In addition  the application  should build a  basic database  of strings
+@@ -24,7 +24,8 @@
+ The  application  should, at  a  later  stage  cater to  translation  of
+ documentation - which has to be served to the translator para or section
+ wise unlike translation of source which is served string by string. This
+-section should also strip all html/xml tags when offering for translation.
++section  should   also  strip  all  HTML/XML  tags   when  offering  for
++translation.
+ 
+ It goes  without saying  that the application  should be  free software,
+ multiplatform  and  multilingual.  It   is  also  clear  that  any  such
+@@ -205,12 +206,12 @@
+ 
+ We are committed  towards helping existing language teams  in setting up
+ the application  for them and  provide all assistance to  them regarding
+-usage of  the application.   We have at  present talked to  two language
++usage of  the application.  We have  at present talked  to four language
+ teams, namely  the Oriya (or)  language team's Gora Mohanty,  the Nepali
+-(np) language  team's Subir  B & the  Dzongkha (dz) team's  Pema Geyleg.
+-Pradhanang.  We'll  work with them  in getting the  application deployed
+-for  them  and  they will  help  us  by  providing translations  of  the
+-interface, bug reports & general feedback.
++(np)  language team's Subir  B Pradhanang,  Gujarati (gu)  team's Kartik
++Mistry & the Dzongkha (dz) team's  Pema Geyleg.  We'll work with them in
++getting  the application  deployed for  them and  they will  help  us by
++providing translations of the interface, bug reports & general feedback.
+ 
+ Funding:
+ 
+
+
+
+From lawgon at berlios.de  Fri Nov 18 02:47:24 2005
+From: lawgon at berlios.de (lawgon at BerliOS)
+Date: Fri, 18 Nov 2005 02:47:24 +0100
+Subject: [Panini-svn] r9 - trunk/docs
+Message-ID: <200511180147.jAI1lOeb005591@sheep.berlios.de>
+
+Author: lawgon
+Date: 2005-11-18 02:47:20 +0100 (Fri, 18 Nov 2005)
+New Revision: 9
+
+Modified:
+   trunk/docs/proposal.txt
+Log:
+small corrections
+
+Modified: trunk/docs/proposal.txt
+===================================================================
+--- trunk/docs/proposal.txt	2005-11-17 11:42:07 UTC (rev 8)
++++ trunk/docs/proposal.txt	2005-11-18 01:47:20 UTC (rev 9)
+@@ -238,10 +238,10 @@
+ The developers are:
+ 
+ 1. Baishampayan Ghose: A Computer Sci. & Engg. Student & a Free Software
+-   developer. I am  an experienced Python developer and  a active member
+-   of the  Free Software  community. I have  some i18n  experience while
++   developer. He is  an experienced Python developer and  a active member
++   of the  Free Software  community. He has  some i18n  experience while
+    leading the Bengali translation  effort of Debian-Installer, Drupal &
+-   Django. I am  also a member of the Free  Software Foundation of India
++   Django. He is  also a member of the Free  Software Foundation of India
+    working committee.
+    Email - b.ghose at gnu.org.in
+ 
+
+
+
+From ghoseb at berlios.de  Fri Nov 18 12:23:21 2005
+From: ghoseb at berlios.de (ghoseb at BerliOS)
+Date: Fri, 18 Nov 2005 12:23:21 +0100
+Subject: [Panini-svn] r10 - trunk/docs
+Message-ID: <200511181123.jAIBNLfc007690@sheep.berlios.de>
+
+Author: ghoseb
+Date: 2005-11-18 12:23:19 +0100 (Fri, 18 Nov 2005)
+New Revision: 10
+
+Modified:
+   trunk/docs/proposal.txt
+Log:
+Minor formatting
+
+
+Modified: trunk/docs/proposal.txt
+===================================================================
+--- trunk/docs/proposal.txt	2005-11-18 01:47:20 UTC (rev 9)
++++ trunk/docs/proposal.txt	2005-11-18 11:23:19 UTC (rev 10)
+@@ -238,10 +238,10 @@
+ The developers are:
+ 
+ 1. Baishampayan Ghose: A Computer Sci. & Engg. Student & a Free Software
+-   developer. He is  an experienced Python developer and  a active member
++   developer. He is an experienced  Python developer and a active member
+    of the  Free Software  community. He has  some i18n  experience while
+    leading the Bengali translation  effort of Debian-Installer, Drupal &
+-   Django. He is  also a member of the Free  Software Foundation of India
++   Django. He is also a member  of the Free Software Foundation of India
+    working committee.
+    Email - b.ghose at gnu.org.in
+ 
+
+
+
+From ghoseb at berlios.de  Mon Nov 21 12:13:04 2005
+From: ghoseb at berlios.de (ghoseb at BerliOS)
+Date: Mon, 21 Nov 2005 12:13:04 +0100
+Subject: [Panini-svn] r11 - trunk/docs
+Message-ID: <200511211113.jALBD4bj001548@sheep.berlios.de>
+
+Author: ghoseb
+Date: 2005-11-21 12:13:04 +0100 (Mon, 21 Nov 2005)
+New Revision: 11
+
+Modified:
+   trunk/docs/proposal.txt
+Log:
+A few additions with suggestions from karunakar, swapnil, and hpnadig
+
+
+Modified: trunk/docs/proposal.txt
+===================================================================
+--- trunk/docs/proposal.txt	2005-11-18 11:23:19 UTC (rev 10)
++++ trunk/docs/proposal.txt	2005-11-21 11:13:04 UTC (rev 11)
+@@ -94,12 +94,21 @@
+ strings translated. This can also  be filtered according to the project,
+ language, translator as well as different project versions.
+ 
+-Merging Translations:
++Merging Translations & Upstream Syncing:
+ 
+ There will be provison for merging translations done through independent
+ systems.  That will  avoid redundancy  and will  help in  making  use of
+ pre-existing translations.
++The application would allow syncing of translated files directly with
++upstream CVS / SVN repositories.
+ 
++Translation Memory:
++
++The system  wil never throw  translations away. All  proposed, accepted,
++rejected  translations will  be  perpetually kept  in  the database  for
++future  reference. For example,  the system  would be  able to  show all
++prior translations of a given string in any given language.
++
+ Online Review:
+ 
+ An system for reviewing the translations online will be present so as to
+@@ -145,6 +154,13 @@
+ application so  that authenticated translators  can recieve untranslated
+ strings and send translations by Email.
+ 
++Web Services API:
++
++The system would provide a Webservice API so that existing & new desktop
++translation tools can plug into  the application via a plugin. This will
++enable translators  to keep using their  tools but with  the Panini back
++end.
++
+ Screenshot Gallery:
+ 
+ There will be a screenhot gallery which will have screenshots of various
+
+
+
+From ghoseb at berlios.de  Mon Nov 21 12:14:21 2005
+From: ghoseb at berlios.de (ghoseb at BerliOS)
+Date: Mon, 21 Nov 2005 12:14:21 +0100
+Subject: [Panini-svn] r12 - trunk/docs
+Message-ID: <200511211114.jALBEL6T002131@sheep.berlios.de>
+
+Author: ghoseb
+Date: 2005-11-21 12:14:19 +0100 (Mon, 21 Nov 2005)
+New Revision: 12
+
+Modified:
+   trunk/docs/proposal.txt
+Log:
+Minor edit
+
+
+Modified: trunk/docs/proposal.txt
+===================================================================
+--- trunk/docs/proposal.txt	2005-11-21 11:13:04 UTC (rev 11)
++++ trunk/docs/proposal.txt	2005-11-21 11:14:19 UTC (rev 12)
+@@ -99,7 +99,7 @@
+ There will be provison for merging translations done through independent
+ systems.  That will  avoid redundancy  and will  help in  making  use of
+ pre-existing translations.
+-The application would allow syncing of translated files directly with
++The application  would allow syncing  of translated files  directly with
+ upstream CVS / SVN repositories.
+ 
+ Translation Memory:
+
+
+
+From ghoseb at berlios.de  Mon Nov 21 12:18:47 2005
+From: ghoseb at berlios.de (ghoseb at BerliOS)
+Date: Mon, 21 Nov 2005 12:18:47 +0100
+Subject: [Panini-svn] r13 - trunk/docs
+Message-ID: <200511211118.jALBIlw6002795@sheep.berlios.de>
+
+Author: ghoseb
+Date: 2005-11-21 12:18:46 +0100 (Mon, 21 Nov 2005)
+New Revision: 13
+
+Modified:
+   trunk/docs/proposal.txt
+Log:
+Formatting foo
+
+
+Modified: trunk/docs/proposal.txt
+===================================================================
+--- trunk/docs/proposal.txt	2005-11-21 11:14:19 UTC (rev 12)
++++ trunk/docs/proposal.txt	2005-11-21 11:18:46 UTC (rev 13)
+@@ -2,6 +2,7 @@
+ ----------------------------------------------------------------------
+ 
+ Synopsis: 
++---------
+ 
+ Translation of free & open source applications - like free & open source
+ applications   themselves,    depend   on   the    whims   of   would-be
+@@ -32,6 +33,7 @@
+ application has to be web based.
+ 
+ Existing efforts:
++-----------------
+ 
+ We  have  investigated  Rosetta [https://launchpad.net/rosetta],  Pootle
+ [http://pootle.wordforge.org/]   and   Entrans  [http://entrans.sf.net].
+@@ -44,6 +46,7 @@
+ incorporated into this project.
+ 
+ Platform:
++---------
+ 
+ We propose using the Python  scripting language with PostgreSQL RDBMS as
+ a backend.  The  webserver will be Apache. We will  be using other tools
+@@ -55,6 +58,7 @@
+ at and contribute to the project.
+ 
+ Workflow:
++---------
+ 
+ The Application  developer registers an application and  uploads the POT
+ file.  He also  gives the file version. The  application will treat each
+@@ -104,7 +108,7 @@
+ 
+ Translation Memory:
+ 
+-The system  wil never throw  translations away. All  proposed, accepted,
++The system  will never throw translations away.  All proposed, accepted,
+ rejected  translations will  be  perpetually kept  in  the database  for
+ future  reference. For example,  the system  would be  able to  show all
+ prior translations of a given string in any given language.
+@@ -169,6 +173,7 @@
+ language / project.
+ 
+ Schedule:
++---------
+ 
+ We  will have  a  server up  and running  with  a basic  version of  the
+ application within a month of  starting the project. Working with active
+@@ -176,6 +181,7 @@
+ period of 6 months to a year.
+ 
+ Proposed Roadmap:
++-----------------
+ 
+ 01 Month:
+    * Database structure and translation user interface - basic functionality
+@@ -219,6 +225,7 @@
+ the feedback.
+ 
+ Commitment To Help Existing Language Teams:
++-------------------------------------------
+ 
+ We are committed  towards helping existing language teams  in setting up
+ the application  for them and  provide all assistance to  them regarding
+@@ -230,6 +237,7 @@
+ providing translations of the interface, bug reports & general feedback.
+ 
+ Funding:
++--------
+ 
+ We are applying for two concurrent fellowships. We intend to develop the
+ application on  one hand, and,  at the same  time, set up a  service for
+@@ -250,6 +258,7 @@
+    service server.
+ 
+ Developers:
++-----------
+ 
+ The developers are:
+ 
+
+
+
+From ghoseb at berlios.de  Wed Nov 23 07:13:04 2005
+From: ghoseb at berlios.de (ghoseb at BerliOS)
+Date: Wed, 23 Nov 2005 07:13:04 +0100
+Subject: [Panini-svn] r14 - trunk/docs
+Message-ID: <200511230613.jAN6D4NI002797@sheep.berlios.de>
+
+Author: ghoseb
+Date: 2005-11-23 07:13:04 +0100 (Wed, 23 Nov 2005)
+New Revision: 14
+
+Modified:
+   trunk/docs/proposal.txt
+Log:
+Spellcheck & formatting foo
+
+
+Modified: trunk/docs/proposal.txt
+===================================================================
+--- trunk/docs/proposal.txt	2005-11-21 11:18:46 UTC (rev 13)
++++ trunk/docs/proposal.txt	2005-11-23 06:13:04 UTC (rev 14)
+@@ -12,9 +12,9 @@
+ the application  developer to coordinate the efforts  of individuals and
+ maintain an adequate level of accuracy and consistency.
+ 
+-The  application  should cater  to  both  sporadic  or 'one-off'  online
+-translation efforts  and more consistent off-line efforts.  Thus it will
+-basically  be an  online web  based application,  but will  also support
++The  application should  cater  to both  sporadic  or 'one-off'  on-line
++translation efforts and more  consistent off-line efforts.  Thus it will
++basically be  an on-line  web based application,  but will  also support
+ offline contributions too.
+ 
+ In addition  the application  should build a  basic database  of strings
+@@ -29,7 +29,7 @@
+ translation.
+ 
+ It goes  without saying  that the application  should be  free software,
+-multiplatform  and  multilingual.  It   is  also  clear  that  any  such
++multi-platform  and  multilingual.   It  is  also clear  that  any  such
+ application has to be web based.
+ 
+ Existing efforts:
+@@ -37,9 +37,9 @@
+ 
+ We  have  investigated  Rosetta [https://launchpad.net/rosetta],  Pootle
+ [http://pootle.wordforge.org/]   and   Entrans  [http://entrans.sf.net].
+-Rosetta is proprietory software. Pootle,  written in python has the idea
+-correct, but it uses a  filesystem to store everything and probably wont
+-scale.  Entrans uses  PHP and  MySQL, which  we feel  are not  stable or
++Rosetta is proprietary software. Pootle,  written in python has the idea
++correct, but it uses a file-system to store everything and probably wont
++scale.  Entrans  uses PHP  and MySQL,  which we feel  are not  stable or
+ secure  enough  for  an  application  of  this nature  -  and  from  the
+ documentation does  not appear  to have the  comprehensive aims  of this
+ project. However elements  of it's user interface are  good and could be
+@@ -49,7 +49,7 @@
+ ---------
+ 
+ We propose using the Python  scripting language with PostgreSQL RDBMS as
+-a backend.  The  webserver will be Apache. We will  be using other tools
++a back-end.  The web server will be Apache. We will be using other tools
+ and frameworks not limited to  Django, Subversion and Trac for scripting
+ various parts  of the  project. Both Python  and PostgreSQL  are stable,
+ mature and inherently  secure and used worldwide on  an immense range of
+@@ -73,16 +73,16 @@
+ partially.
+ 
+ All translations  of strings in all  official versions will  be added to
+-the database.  In case of more than  one translation of a  string into a
+-given  lanuguage, all  translations  will be  added  and it  is left  to
++the database.  In  case of more than one translation of  a string into a
++given  language,  all translations  will  be added  and  it  is left  to
+ individual developers to choose the one they want.
+ 
+ There will be  a facility for experts in  particular languages to review
+ the  database and  cull  out obviously  incorrect translations,  correct
+ spellings,  mark any one  translation as  'preferred' and  remove almost
+-identical duplic ates.
++identical duplicate ates.
+ 
+-Translators will be  able to use the online interface  as well as upload
++Translators will be able to use  the on-line interface as well as upload
+ translations made offline. Submitting translations by email will also be
+ catered to, but this will not have an automatic interface. The developer
+ will have  to accept responsibility for accepting  email submissions and
+@@ -100,29 +100,29 @@
+ 
+ Merging Translations & Upstream Syncing:
+ 
+-There will be provison for merging translations done through independent
+-systems.  That will  avoid redundancy  and will  help in  making  use of
+-pre-existing translations.
++There  will   be  provision   for  merging  translations   done  through
++independent systems.  That will avoid redundancy and will help in making
++use of pre-existing translations.
+ The application  would allow syncing  of translated files  directly with
+ upstream CVS / SVN repositories.
+ 
+ Translation Memory:
+ 
+-The system  will never throw translations away.  All proposed, accepted,
++The system will never  throw translations away.  All proposed, accepted,
+ rejected  translations will  be  perpetually kept  in  the database  for
+ future  reference. For example,  the system  would be  able to  show all
+ prior translations of a given string in any given language.
+ 
+-Online Review:
++On-line Review:
+ 
+-An system for reviewing the translations online will be present so as to
+-help  trusted reviewers  to  just login  to  the system  and review  the
++An system for  reviewing the translations on-line will  be present so as
++to help  trusted reviewers to  just login to  the system and  review the
+ translations.
+ 
+ Consistency Checking:
+ 
+ The  application  will  automatically   check  the  consistency  of  the
+-translations  and will  report errors  if any  for fixes.  In case  of a
++translations and  will report  errors if  any for fixes.   In case  of a
+ broken translation,  the official version  will be switched to  the last
+ sane  translation until  the broken  [but  newer] version  is fixed  and
+ committed.
+@@ -142,11 +142,11 @@
+ 
+ Translated UI:
+ 
+-The UI of the application  itself will be translated into various indian
+-langauges so  as to allow translators  use the application  in their own
++The UI of the application  itself will be translated into various Indian
++languages so  as to allow translators  use the application  in their own
+ native language.
+ 
+-Extensive Online Documentation:
++Extensive On-line Documentation:
+ 
+ Documentation  is very important  in a  project and  we will  provide an
+ extensive documentation  for the application  so that it's easy  for the
+@@ -155,22 +155,22 @@
+ Email Interface:
+ 
+ As already pointed  out, we intend to provide an  Email interface to the
+-application so  that authenticated translators  can recieve untranslated
++application so  that authenticated translators  can receive untranslated
+ strings and send translations by Email.
+ 
+ Web Services API:
+ 
+-The system would provide a Webservice API so that existing & new desktop
+-translation tools can plug into  the application via a plugin. This will
+-enable translators  to keep using their  tools but with  the Panini back
+-end.
++The  system would  provide  a Web-service  API  so that  existing &  new
++desktop  translation   tools  can  plug  into  the   application  via  a
++plugin. This will enable translators  to keep using their tools but with
++the Panini back end.
+ 
+ Screenshot Gallery:
+ 
+-There will be a screenhot gallery which will have screenshots of various
+-translated applications to  inspire more people to join  the i18n / l10n
+-scene as  well as to  show the status  of translations for  a particular
+-language / project.
++There  will be  a  screenshot  gallery which  will  have screenshots  of
++various translated applications to inspire  more people to join the i18n
++/  l10n scene  as  well as  to show  the  status of  translations for  a
++particular language / project.
+ 
+ Schedule:
+ ---------
+@@ -242,7 +242,7 @@
+ We are applying for two concurrent fellowships. We intend to develop the
+ application on  one hand, and,  at the same  time, set up a  service for
+ translators to use. The advantage of  having a live service would be for
+-active feedback for the  application developement process, thus ensuring
++active feedback  for the application development  process, thus ensuring
+ that the application does not wind up as academic vapourware.
+ 
+ 1. We'll initially  require 6 months  funding to create  the application
+@@ -253,9 +253,9 @@
+    cases, etc.
+    
+ 2. Hosting space with root  access along with Subversion, Python, Apache
+-   mod_python, PostgreSQL and a few GB of diskspace - we will either get
+-   hosted or will fund the hosting  out of the fellowship amount for the
+-   service server.
++   mod_python, PostgreSQL  and a few GB  of disk-space -  we will either
++   get hosted or will fund the  hosting out of the fellowship amount for
++   the service server.
+ 
+ Developers:
+ -----------
+@@ -270,7 +270,7 @@
+    working committee.
+    Email - b.ghose at gnu.org.in
+ 
+-2. Kenneth  Gonsalves:  A  Free  &  Open  source  Developer.  Resume  is
++2. Kenneth  Gonsalves:  A  Free  &  Open source  Developer.   Resume  is
+    http://avsap.org.in
+    Email - lawgon at thenilgiris.com
+ 
+
+
+

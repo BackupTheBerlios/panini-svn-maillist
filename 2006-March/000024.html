@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Panini-svn] r23 - trunk/docs
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/panini-svn/2006-March/index.html" >
+   <LINK REL="made" HREF="mailto:panini-svn%40lists.berlios.de?Subject=Re%3A%20%5BPanini-svn%5D%20r23%20-%20trunk/docs&In-Reply-To=%3C200603180620.k2I6KajX005305%40sheep.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000023.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Panini-svn] r23 - trunk/docs</H1>
+    <B>lawgon at BerliOS</B> 
+    <A HREF="mailto:panini-svn%40lists.berlios.de?Subject=Re%3A%20%5BPanini-svn%5D%20r23%20-%20trunk/docs&In-Reply-To=%3C200603180620.k2I6KajX005305%40sheep.berlios.de%3E"
+       TITLE="[Panini-svn] r23 - trunk/docs">lawgon at berlios.de
+       </A><BR>
+    <I>Sat Mar 18 07:20:36 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000023.html">[Panini-svn] r22 - trunk/docs
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#24">[ date ]</a>
+              <a href="thread.html#24">[ thread ]</a>
+              <a href="subject.html#24">[ subject ]</a>
+              <a href="author.html#24">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Author: lawgon
+Date: 2006-03-18 07:20:08 +0100 (Sat, 18 Mar 2006)
+New Revision: 23
+
+Modified:
+   trunk/docs/models.txt
+Log:
+update models.txt
+
+Modified: trunk/docs/models.txt
+===================================================================
+--- trunk/docs/models.txt	2006-03-16 07:15:37 UTC (rev 22)
++++ trunk/docs/models.txt	2006-03-18 06:20:08 UTC (rev 23)
+@@ -27,3 +27,10 @@
+ So we can make sure each string has only one translation and many
+ suggestions if at all.
+ Kindly see how we can express the above idea in Django.
++
++model structure for the translations:
++language (name (unique), shortname (unique))
++project (name, owner,startdate etc)
++project_version (fk to project, version no, date)
++english_string (many2many to project_version, string (unique))
++translated_strings (fk to english_string, fk to language, string, string+language unique, approved=boolean) translated strings model should have the javascript
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000023.html">[Panini-svn] r22 - trunk/docs
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#24">[ date ]</a>
+              <a href="thread.html#24">[ thread ]</a>
+              <a href="subject.html#24">[ subject ]</a>
+              <a href="author.html#24">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/panini-svn">More information about the Panini-SVN
+mailing list</a><br>
+</body></html>

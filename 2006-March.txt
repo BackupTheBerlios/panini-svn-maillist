@@ -1,0 +1,124 @@
+From lawgon at berlios.de  Wed Mar  1 06:48:30 2006
+From: lawgon at berlios.de (lawgon at BerliOS)
+Date: Wed, 1 Mar 2006 06:48:30 +0100
+Subject: [Panini-svn] r21 - trunk/docs
+Message-ID: <200603010548.k215mU4N031834@sheep.berlios.de>
+
+Author: lawgon
+Date: 2006-03-01 06:48:25 +0100 (Wed, 01 Mar 2006)
+New Revision: 21
+
+Added:
+   trunk/docs/models.txt
+Log:
+started models
+
+Added: trunk/docs/models.txt
+===================================================================
+--- trunk/docs/models.txt	2006-02-04 06:56:41 UTC (rev 20)
++++ trunk/docs/models.txt	2006-03-01 05:48:25 UTC (rev 21)
+@@ -0,0 +1,15 @@
++just to set the ball rolling
++
++models
++
++1. users - extend the existing users module, need fields:
++roles - many2many to roles table
++
++2. roles - author, translator, reviewer etc
++
++3. projects - name, owner (fkey to users), startdate
++
++4. files - name, version, project(fkey to project), startdate
++
++5. translations - language, file(fkey to files) translators (m2m key to users,
++reviewers, (m2m to users)
+\ No newline at end of file
+
+
+
+From ghoseb at berlios.de  Thu Mar 16 08:15:44 2006
+From: ghoseb at berlios.de (ghoseb at BerliOS)
+Date: Thu, 16 Mar 2006 08:15:44 +0100
+Subject: [Panini-svn] r22 - trunk/docs
+Message-ID: <200603160715.k2G7FiiC006703@sheep.berlios.de>
+
+Author: ghoseb
+Date: 2006-03-16 08:15:37 +0100 (Thu, 16 Mar 2006)
+New Revision: 22
+
+Modified:
+   trunk/docs/models.txt
+Log:
+Added my ideas
+
+
+Modified: trunk/docs/models.txt
+===================================================================
+--- trunk/docs/models.txt	2006-03-01 05:48:25 UTC (rev 21)
++++ trunk/docs/models.txt	2006-03-16 07:15:37 UTC (rev 22)
+@@ -5,11 +5,25 @@
+ 1. users - extend the existing users module, need fields:
+ roles - many2many to roles table
+ 
+-2. roles - author, translator, reviewer etc
++2. roles - admin, translator, reviewer etc
+ 
+ 3. projects - name, owner (fkey to users), startdate
+ 
+ 4. files - name, version, project(fkey to project), startdate
+ 
+ 5. translations - language, file(fkey to files) translators (m2m key to users,
+-reviewers, (m2m to users)
+\ No newline at end of file
++reviewers, (m2m to users)
++
++Do we save the translations as strings belonging to projects? That would
++help us solve a few issues I guess. Something like --
++
++string belongs to many files
++string has one translation
++string has many translation suggestion
++string has zero or many comments (comments belong to files)
++string has one boolean field (fuzzy)
++
++
++So we can make sure each string has only one translation and many
++suggestions if at all.
++Kindly see how we can express the above idea in Django.
+
+
+
+From lawgon at berlios.de  Sat Mar 18 07:20:36 2006
+From: lawgon at berlios.de (lawgon at BerliOS)
+Date: Sat, 18 Mar 2006 07:20:36 +0100
+Subject: [Panini-svn] r23 - trunk/docs
+Message-ID: <200603180620.k2I6KajX005305@sheep.berlios.de>
+
+Author: lawgon
+Date: 2006-03-18 07:20:08 +0100 (Sat, 18 Mar 2006)
+New Revision: 23
+
+Modified:
+   trunk/docs/models.txt
+Log:
+update models.txt
+
+Modified: trunk/docs/models.txt
+===================================================================
+--- trunk/docs/models.txt	2006-03-16 07:15:37 UTC (rev 22)
++++ trunk/docs/models.txt	2006-03-18 06:20:08 UTC (rev 23)
+@@ -27,3 +27,10 @@
+ So we can make sure each string has only one translation and many
+ suggestions if at all.
+ Kindly see how we can express the above idea in Django.
++
++model structure for the translations:
++language (name (unique), shortname (unique))
++project (name, owner,startdate etc)
++project_version (fk to project, version no, date)
++english_string (many2many to project_version, string (unique))
++translated_strings (fk to english_string, fk to language, string, string+language unique, approved=boolean) translated strings model should have the javascript
+
+
+
